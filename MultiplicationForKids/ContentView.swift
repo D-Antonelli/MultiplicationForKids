@@ -20,7 +20,8 @@ struct MultiplicationSelectionButton: View {
 }
 
 struct ContentView: View {
-    @State private var multiplication = 1
+    @State private var multiplication = 0
+    @State private var numberOfQuestions = 0
     
     var body: some View {
         VStack {
@@ -28,18 +29,18 @@ struct ContentView: View {
                 Text("Multiplication")
                 HStack {
                     ForEach(1..<5) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(number: num) }
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(num) }
                     }
                 }
                 
                 HStack {
                     ForEach(5..<9) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(number: num) }
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(num) }
                     }
                 }
                 HStack {
                     ForEach(9..<13) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(number: num) }
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(num) }
                     }
                 }
             }
@@ -48,16 +49,26 @@ struct ContentView: View {
             
             Section {
                 Text("Number of questions")
-                Button("5") {}
-                Button("10") {}
-                Button("20") {}
+                Button("5") {
+                    selectNumberOfQuestions(5)
+                }
+                Button("10") {
+                    selectNumberOfQuestions(10)
+                }
+                Button("20") {
+                    selectNumberOfQuestions(20)
+                }
             }
+            
+            Spacer()
+            
+            Button("Start") {}
             
             Spacer()
             
             Section {
                 Text("Multiplication selected: \(multiplication)")
-                Text("Questions selected: ")
+                Text("Questions selected: \(numberOfQuestions)")
             }
             
             Spacer()
@@ -65,8 +76,12 @@ struct ContentView: View {
 
     }
     
-    func selectMultiplication(number: Int) {
+    func selectMultiplication(_ number: Int) {
         multiplication = number
+    }
+    
+    func selectNumberOfQuestions(_ number: Int) {
+        numberOfQuestions = number
     }
 }
 
