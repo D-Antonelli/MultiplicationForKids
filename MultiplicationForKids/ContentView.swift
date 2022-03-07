@@ -7,36 +7,56 @@
 
 import SwiftUI
 
+struct MultiplicationSelectionButton: View {
+    public var label: String
+    public var multiplication: Int
+    public var select: (Int) -> Void
+    
+    var body: some View {
+        Button(label) {
+            select(multiplication)
+        }
+    }
+}
+
 struct ContentView: View {
+    @State private var multiplication = 1
+    
     var body: some View {
         VStack {
             Section {
                 Text("Multiplication")
                 HStack {
-                    Button("1") {}
-                    Button("2") {}
-                    Button("3") {}
-                    Button("4") {}
+                    ForEach(1..<5) {num in
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in select(number: num) }
+                    }
+                }
+                
+                HStack {
+                    ForEach(5..<9) {num in
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in select(number: num) }
+                    }
                 }
                 HStack {
-                    Button("5") {}
-                    Button("6") {}
-                    Button("7") {}
-                    Button("8") {}
-                }
-                HStack {
-                    Button("9") {}
-                    Button("10") {}
-                    Button("11") {}
-                    Button("12") {}
+                    ForEach(9..<13) {num in
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in select(number: num) }
+                    }
                 }
             }
             
+            Spacer()
+            
             Section {
-                Text("Selected")
+                Text("\(multiplication)")
             }
+            
+            Spacer()
         }
 
+    }
+    
+    func select(number: Int) {
+        multiplication = number
     }
 }
 
