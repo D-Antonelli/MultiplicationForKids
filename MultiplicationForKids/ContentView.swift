@@ -9,8 +9,34 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Section {
+                Text("Multiplication")
+                HStack {
+                    Button("1") {}
+                    Button("2") {}
+                    Button("3") {}
+                    Button("4") {}
+                }
+                HStack {
+                    Button("5") {}
+                    Button("6") {}
+                    Button("7") {}
+                    Button("8") {}
+                }
+                HStack {
+                    Button("9") {}
+                    Button("10") {}
+                    Button("11") {}
+                    Button("12") {}
+                }
+            }
+            
+            Section {
+                Text("Selected")
+            }
+        }
+
     }
 }
 
