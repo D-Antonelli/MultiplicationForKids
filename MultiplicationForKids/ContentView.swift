@@ -20,10 +20,10 @@ struct TableSelectionButton: View {
 }
 
 struct Question: View {
-    public var multiplication: Int
+    public var table: Int
     
     var body: some View {
-        Text("\(multiplication)")
+        Text("\(table)")
     }
 }
 
@@ -70,7 +70,7 @@ struct ContentView: View {
             
             Spacer()
             
-            Question(multiplication: table)
+            Question(table: table)
             
             Button("Start") {}
             
