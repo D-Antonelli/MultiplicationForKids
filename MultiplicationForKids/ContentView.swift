@@ -7,40 +7,48 @@
 
 import SwiftUI
 
-struct MultiplicationSelectionButton: View {
+struct TableSelectionButton: View {
     public var label: String
-    public var multiplication: Int
+    public var table: Int
     public var select: (Int) -> Void
     
     var body: some View {
         Button(label) {
-            select(multiplication)
+            select(table)
         }
     }
 }
 
+struct Question: View {
+    public var multiplication: Int
+    
+    var body: some View {
+        Text("\(multiplication)")
+    }
+}
+
 struct ContentView: View {
-    @State private var multiplication = 0
+    @State private var table = 0
     @State private var numberOfQuestions = 0
     
     var body: some View {
         VStack {
             Section {
-                Text("Multiplication")
+                Text("Table")
                 HStack {
                     ForEach(1..<5) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(num) }
+                        TableSelectionButton(label: "\(num)", table: num) {num in selectTable(num) }
                     }
                 }
                 
                 HStack {
                     ForEach(5..<9) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(num) }
+                       TableSelectionButton(label: "\(num)", table: num) {num in selectTable(num) }
                     }
                 }
                 HStack {
                     ForEach(9..<13) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(num) }
+                        TableSelectionButton(label: "\(num)", table: num) {num in selectTable(num) }
                     }
                 }
             }
@@ -62,12 +70,14 @@ struct ContentView: View {
             
             Spacer()
             
+            Question(multiplication: table)
+            
             Button("Start") {}
             
             Spacer()
             
             Section {
-                Text("Multiplication selected: \(multiplication)")
+                Text("Table selected: \(table)")
                 Text("Questions selected: \(numberOfQuestions)")
             }
             
@@ -76,8 +86,8 @@ struct ContentView: View {
 
     }
     
-    func selectMultiplication(_ number: Int) {
-        multiplication = number
+    func selectTable(_ number: Int) {
+        table = number
     }
     
     func selectNumberOfQuestions(_ number: Int) {
