@@ -28,18 +28,18 @@ struct ContentView: View {
                 Text("Multiplication")
                 HStack {
                     ForEach(1..<5) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in select(number: num) }
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(number: num) }
                     }
                 }
                 
                 HStack {
                     ForEach(5..<9) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in select(number: num) }
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(number: num) }
                     }
                 }
                 HStack {
                     ForEach(9..<13) {num in
-                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in select(number: num) }
+                        MultiplicationSelectionButton(label: "\(num)", multiplication: num) {num in selectMultiplication(number: num) }
                     }
                 }
             }
@@ -47,7 +47,17 @@ struct ContentView: View {
             Spacer()
             
             Section {
-                Text("\(multiplication)")
+                Text("Number of questions")
+                Button("5") {}
+                Button("10") {}
+                Button("20") {}
+            }
+            
+            Spacer()
+            
+            Section {
+                Text("Multiplication selected: \(multiplication)")
+                Text("Questions selected: ")
             }
             
             Spacer()
@@ -55,7 +65,7 @@ struct ContentView: View {
 
     }
     
-    func select(number: Int) {
+    func selectMultiplication(number: Int) {
         multiplication = number
     }
 }
