@@ -21,15 +21,17 @@ struct TableSelectionButton: View {
 
 struct Question: View {
     public var table: Int
+    public var times = 1
     
     var body: some View {
-        Text("\(table)")
+        Text("\(table) x \(times)")
     }
 }
 
 struct ContentView: View {
     @State private var table = 0
     @State private var numberOfQuestions = 0
+    @State private var times = [1]
     
     var body: some View {
         VStack {
@@ -72,13 +74,16 @@ struct ContentView: View {
             
             Question(table: table)
             
-            Button("Start") {}
+            Button("Start") {
+                populateTimesArray()
+            }
             
             Spacer()
             
             Section {
                 Text("Table selected: \(table)")
                 Text("Questions selected: \(numberOfQuestions)")
+                Text("Times: \(times.count)")
             }
             
             Spacer()
@@ -92,6 +97,20 @@ struct ContentView: View {
     
     func selectNumberOfQuestions(_ number: Int) {
         numberOfQuestions = number
+    }
+    
+    func populateTimesArray() {
+        var iteration = 1
+        
+        while (iteration < numberOfQuestions) {
+            let random = Int.random(in: 1...12)
+                    if(!times.contains(random)) {
+                        times.append(random)
+                        iteration+=1
+                    }
+            
+        }
+        
     }
 }
 
