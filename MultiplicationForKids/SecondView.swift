@@ -8,13 +8,21 @@
 import SwiftUI
 
 struct SecondView: View {
+    var questions = [Question]()
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            ForEach(questions, id: \.self) { question in
+                question
+            }
+        }
     }
 }
 
 struct SecondView_Previews: PreviewProvider {
+    static let questionsPreview = [Question]()
+    
     static var previews: some View {
-        SecondView()
+        SecondView(questions: questionsPreview)
     }
 }

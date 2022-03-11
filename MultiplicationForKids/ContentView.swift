@@ -40,6 +40,7 @@ struct ContentView: View {
     @State private var table = 0
     @State private var numberOfQuestions = 0
     @State private var questions = [Question]()
+    @State private var showSecondView = false
     
     public var canStartGame: Bool {
         return table > 0 && numberOfQuestions > 0
@@ -87,6 +88,7 @@ struct ContentView: View {
             Section {
                 Button("Start") {
                     populateQuestions()
+                    showSecondView.toggle()
                 }
                 .disabled(canStartGame == false)
             }
@@ -98,11 +100,14 @@ struct ContentView: View {
                 Text("Questions selected: \(numberOfQuestions)")
             }
             
-            ForEach(questions, id: \.self) { question in
-                question
-            }
+//            ForEach(questions, id: \.self) { question in
+//                question
+//            }
             
             Spacer()
+        }
+        .sheet(isPresented: $showSecondView) {
+            SecondView(questions: questions)
         }
 
     }
