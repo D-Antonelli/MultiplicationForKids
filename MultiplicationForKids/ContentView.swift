@@ -11,6 +11,7 @@ struct TableSelectionButton: View {
     public var label: String
     public var table: Int
     public var select: (Int) -> Void
+
     
     var body: some View {
         Button(label) {
@@ -18,6 +19,8 @@ struct TableSelectionButton: View {
         }
     }
 }
+
+
 
 struct Question: View {
     public var table: Int
@@ -31,10 +34,16 @@ struct Question: View {
     }
 }
 
+
+
 struct ContentView: View {
     @State private var table = 0
     @State private var numberOfQuestions = 0
     @State private var randomTimes = [Int]()
+    
+    public var canStartGame: Bool {
+        return table > 0 && numberOfQuestions > 0
+    }
     
     var body: some View {
         VStack {
@@ -75,8 +84,11 @@ struct ContentView: View {
             
             Spacer()
             
-            Button("Start") {
-                populateTimesArray()
+            Section {
+                Button("Start") {
+                    populateTimesArray()
+                }
+                .disabled(canStartGame == false)
             }
             
             Spacer()
