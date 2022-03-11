@@ -31,7 +31,7 @@ struct Question: View {
 struct ContentView: View {
     @State private var table = 0
     @State private var numberOfQuestions = 0
-    @State private var times = [1]
+    @State private var randomTimes = [Int]()
     
     var body: some View {
         VStack {
@@ -72,7 +72,7 @@ struct ContentView: View {
             
             Spacer()
             
-            Question(table: table)
+            // Question(table: table)
             
             Button("Start") {
                 populateTimesArray()
@@ -83,7 +83,10 @@ struct ContentView: View {
             Section {
                 Text("Table selected: \(table)")
                 Text("Questions selected: \(numberOfQuestions)")
-                Text("Times: \(times.count)")
+            }
+            
+            ForEach(randomTimes, id: \.self) {
+                Text("\($0)")
             }
             
             Spacer()
@@ -100,15 +103,16 @@ struct ContentView: View {
     }
     
     func populateTimesArray() {
-        var iteration = 1
+        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        var times = numbers
         
-        while (iteration < numberOfQuestions) {
-            let random = Int.random(in: 1...12)
-                    if(!times.contains(random)) {
-                        times.append(random)
-                        iteration+=1
-                    }
-            
+        for _ in 1...numberOfQuestions {
+         if(times.count < 1) {
+             times = numbers
+            }
+        let randomIndex = Int.random(in: 0..<times.count)
+        randomTimes.append(times[randomIndex])
+        times.remove(at: randomIndex)
         }
         
     }
@@ -116,6 +120,9 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Group {
+            ContentView()
+            ContentView()
+        }
     }
 }
