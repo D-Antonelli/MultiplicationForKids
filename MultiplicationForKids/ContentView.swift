@@ -22,7 +22,7 @@ struct TableSelectionButton: View {
 
 
 
-struct Question: View {
+struct Question: Hashable, View {
     public var table: Int
     public var time: Int
     public var result: Int {
@@ -30,7 +30,7 @@ struct Question: View {
     }
     
     var body: some View {
-        Text("\(table) x \(time) = \(result)")
+        Text("\(table) x \(time) = ")
     }
 }
 
@@ -39,7 +39,7 @@ struct Question: View {
 struct ContentView: View {
     @State private var table = 0
     @State private var numberOfQuestions = 0
-    @State private var randomTimes = [Int]()
+    @State private var questions = [Question]()
     
     public var canStartGame: Bool {
         return table > 0 && numberOfQuestions > 0
@@ -86,7 +86,7 @@ struct ContentView: View {
             
             Section {
                 Button("Start") {
-                    populateTimesArray()
+                    populateQuestions()
                 }
                 .disabled(canStartGame == false)
             }
@@ -98,8 +98,8 @@ struct ContentView: View {
                 Text("Questions selected: \(numberOfQuestions)")
             }
             
-            ForEach(randomTimes, id: \.self) { time in
-                Question(table: table, time: time)
+            ForEach(questions, id: \.self) { question in
+                question
             }
             
             Spacer()
@@ -115,22 +115,25 @@ struct ContentView: View {
         numberOfQuestions = number
     }
     
-    func populateTimesArray() {
+    func populateQuestions() {
         let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        randomTimes.removeAll()
         var times = numbers
+        questions.removeAll()
         
         for _ in 1...numberOfQuestions {
          if(times.count < 1) {
              times = numbers
             }
         let randomIndex = Int.random(in: 0..<times.count)
-        randomTimes.append(times[randomIndex])
+        let randomTime = times[randomIndex]
+            
+        questions.append(Question(table: table, time: randomTime))
         times.remove(at: randomIndex)
         }
         
     }
 }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
