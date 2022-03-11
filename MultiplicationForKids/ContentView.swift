@@ -21,10 +21,13 @@ struct TableSelectionButton: View {
 
 struct Question: View {
     public var table: Int
-    public var times = 1
+    public var time: Int
+    public var result: Int {
+        return table * time
+    }
     
     var body: some View {
-        Text("\(table) x \(times)")
+        Text("\(table) x \(time) = \(result)")
     }
 }
 
@@ -72,8 +75,6 @@ struct ContentView: View {
             
             Spacer()
             
-            // Question(table: table)
-            
             Button("Start") {
                 populateTimesArray()
             }
@@ -85,8 +86,8 @@ struct ContentView: View {
                 Text("Questions selected: \(numberOfQuestions)")
             }
             
-            ForEach(randomTimes, id: \.self) {
-                Text("\($0)")
+            ForEach(randomTimes, id: \.self) { time in
+                Question(table: table, time: time)
             }
             
             Spacer()
