@@ -38,7 +38,6 @@ struct Question: Hashable, View {
 struct ContentView: View {
     @State private var table = 0
     @State private var numberOfQuestions = 0
-    @State private var questions = [Question]()
     @State private var showSecondView = false
     
     public var canStartGame: Bool {
@@ -48,6 +47,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Section {
+                Spacer()
                 Text("Table")
                 HStack {
                     ForEach(1..<5) {num in
