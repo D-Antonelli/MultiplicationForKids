@@ -14,7 +14,7 @@ struct SecondView: View {
 
     var body: some View {
         VStack {
-            ForEach(questions, id: \.self) { question in
+            List(questions, id: \.self) { question in
                 question
             }
         }
