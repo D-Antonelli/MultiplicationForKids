@@ -10,12 +10,23 @@ import SwiftUI
 struct SecondView: View {
     public var table = 0
     public var numberOfQuestions = 0
+    @State private var answers: [Int]
     @State private var questions = [Question]()
+    
+    init(table: Int, numberOfQuestions: Int) {
+        self.table = table
+        self.numberOfQuestions = numberOfQuestions
+        self.answers = Array(repeating: 0, count: self.numberOfQuestions)
+    }
 
     var body: some View {
         VStack {
-            List(questions, id: \.self) { question in
-                question
+            List(questions) { question in
+                HStack {
+                    Text("\(question.table) x \(question.time) = ")
+                    TextField("answer", value: $answers[question.index], format: .number)
+                }
+                
             }
             
         }
@@ -28,16 +39,15 @@ struct SecondView: View {
     func populateQuestions() {
         let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
         var times = numbers
-        questions.removeAll()
         
-        for _ in 1...numberOfQuestions {
+        for i in 1...numberOfQuestions {
          if(times.count < 1) {
              times = numbers
             }
         let randomIndex = Int.random(in: 0..<times.count)
         let randomTime = times[randomIndex]
             
-        questions.append(Question(table: table, time: randomTime))
+        questions.append(Question(table: table, time: randomTime, index: i - 1))
         times.remove(at: randomIndex)
         }
         

@@ -21,30 +21,11 @@ struct TableSelectionButton: View {
 }
 
 
-struct Question: Hashable, Equatable, View {
-    
-    static func == (lhs: Question, rhs: Question) -> Bool {
-        lhs.table == lhs.table && lhs.time == rhs.time && lhs.result == rhs.result
-    }
-    
-    @State public var answer: Int = 0
-    public var table: Int
-    public var time: Int
-    public var result: Int {
-        return table * time
-    }
-    
-    var body: some View {
-        HStack {
-            Text("\(table) x \(time) = ")
-            TextField("Answer", value: $answer, format: .number)
-        }
-    }
-    
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(table)
-        hasher.combine(time)
-    }
+struct Question: Identifiable, Hashable {
+    let table: Int
+    let time: Int
+    let index: Int
+    let id = UUID()
 }
 
 
