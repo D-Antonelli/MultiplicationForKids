@@ -17,6 +17,7 @@ struct SecondView: View {
             List(questions, id: \.self) { question in
                 question
             }
+            
         }
         .onAppear {
             populateQuestions()
