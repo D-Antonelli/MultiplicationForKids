@@ -10,6 +10,8 @@ import SwiftUI
 struct SecondView: View {
     public var table = 0
     public var numberOfQuestions = 0
+    @State private var correctAnswers = 0
+    @State private var wrongAnswers = 0
     @State private var answers: [Int]
     @State private var questions = [Question]()
     
@@ -27,6 +29,15 @@ struct SecondView: View {
                     TextField("answer", value: $answers[question.index], format: .number)
                 }
                 
+            }
+            
+            Text("Correct: \(correctAnswers)")
+            Text("Wrong: \(wrongAnswers)")
+            
+            Spacer()
+            
+            Button("Submit") {
+                submitAnswers()
             }
             
         }
@@ -51,6 +62,18 @@ struct SecondView: View {
         times.remove(at: randomIndex)
         }
         
+    }
+    
+    func submitAnswers() {
+        questions.forEach() { question in
+            let result = question.time * question.table
+            let answer = answers[question.index]
+            if(answer == result) {
+                correctAnswers += 1
+            } else {
+                wrongAnswers += 1
+            }
+        }
     }
 }
 
