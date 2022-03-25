@@ -21,11 +21,15 @@ struct TableSelectionButton: View {
 }
 
 
-struct Question: Identifiable, Hashable {
+struct Question: Identifiable, Hashable, View {
     let table: Int
     let time: Int
     let index: Int
     let id = UUID()
+    
+    var body: some View {
+        Text("\(table) x \(time) = ")
+    }
 }
 
 

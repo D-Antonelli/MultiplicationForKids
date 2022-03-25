@@ -25,7 +25,7 @@ struct SecondView: View {
         VStack {
             List(questions) { question in
                 HStack {
-                    Text("\(question.table) x \(question.time) = ")
+                    question
                     TextField("answer", value: $answers[question.index], format: .number)
                 }
                 
