@@ -32,6 +32,10 @@ struct Question: Identifiable, Hashable, View {
     }
 }
 
+class Questions: ObservableObject {
+    @Published var questions = [Question]()
+}
+
 
 
 struct ContentView: View {
