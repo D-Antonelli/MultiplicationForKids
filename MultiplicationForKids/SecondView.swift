@@ -11,7 +11,6 @@ struct SecondView: View {
     public var table = 0
     public var numberOfQuestions = 0
     @State private var correctAnswers = 0
-    @State private var wrongAnswers = 0
     @State private var answers: [Int]
     @State private var questions = [Question]()
     @State private var showThirdView = false
@@ -33,7 +32,6 @@ struct SecondView: View {
             }
             
             Text("Correct: \(correctAnswers)")
-            Text("Wrong: \(wrongAnswers)")
             
             Spacer()
             
@@ -74,8 +72,6 @@ struct SecondView: View {
             let answer = answers[question.index]
             if(answer == result) {
                 correctAnswers += 1
-            } else {
-                wrongAnswers += 1
             }
         }
         
