@@ -14,6 +14,7 @@ struct SecondView: View {
     @State private var wrongAnswers = 0
     @State private var answers: [Int]
     @State private var questions = [Question]()
+    @State private var showThirdView = false
     
     init(table: Int, numberOfQuestions: Int) {
         self.table = table
@@ -43,6 +44,9 @@ struct SecondView: View {
         }
         .onAppear {
             populateQuestions()
+        }
+        .sheet(isPresented: $showThirdView) {
+            ThirdView(correct: correctAnswers, total: numberOfQuestions)
         }
     }
         
@@ -74,6 +78,8 @@ struct SecondView: View {
                 wrongAnswers += 1
             }
         }
+        
+        showThirdView = true
     }
 }
 

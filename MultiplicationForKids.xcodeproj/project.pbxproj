@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A057D1627EDB8EE00129E6B /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A057D1527EDB8EE00129E6B /* ThirdView.swift */; };
 		8A81C34C27DB658C00DDDC21 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C34B27DB658C00DDDC21 /* SecondView.swift */; };
 		8AD04B9227D6180600DD55FC /* MultiplicationForKidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */; };
 		8AD04B9427D6180600DD55FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD04B9327D6180600DD55FC /* ContentView.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A057D1527EDB8EE00129E6B /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
 		8A81C34B27DB658C00DDDC21 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		8AD04B8E27D6180600DD55FC /* MultiplicationForKids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiplicationForKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationForKidsApp.swift; sourceTree = "<group>"; };
@@ -58,6 +60,7 @@
 				8AD04B9527D6180800DD55FC /* Assets.xcassets */,
 				8AD04B9727D6180800DD55FC /* Preview Content */,
 				8A81C34B27DB658C00DDDC21 /* SecondView.swift */,
+				8A057D1527EDB8EE00129E6B /* ThirdView.swift */,
 			);
 			path = MultiplicationForKids;
 			sourceTree = "<group>";
@@ -140,6 +143,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A057D1627EDB8EE00129E6B /* ThirdView.swift in Sources */,
 				8A81C34C27DB658C00DDDC21 /* SecondView.swift in Sources */,
 				8AD04B9427D6180600DD55FC /* ContentView.swift in Sources */,
 				8AD04B9227D6180600DD55FC /* MultiplicationForKidsApp.swift in Sources */,
