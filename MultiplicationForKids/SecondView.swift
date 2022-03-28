@@ -8,21 +8,15 @@
 import SwiftUI
 
 struct SecondView: View {
-    public var numberOfQuestions = 0
+    @EnvironmentObject var game: Game
+    
     @State private var correctAnswers = 0
-    @State private var answers: [Int]
+    @State private var answers = Array(repeating: 0, count: 20)
     @State private var showThirdView = false
-    
-    @EnvironmentObject var questions: Questions
-    
-    init(numberOfQuestions: Int) {
-        self.numberOfQuestions = numberOfQuestions
-        self.answers = Array(repeating: 0, count: self.numberOfQuestions)
-    }
 
     var body: some View {
         VStack {
-            List(questions.questions) { question in
+            List(game.questions) { question in
                 HStack {
                     question
                     TextField("answer", value: $answers[question.index], format: .number)
@@ -42,13 +36,13 @@ struct SecondView: View {
         }
         
         .sheet(isPresented: $showThirdView) {
-            ThirdView(correct: correctAnswers, total: numberOfQuestions)
+            ThirdView(correct: correctAnswers, total: game.numberOfQuestions)
         }
     }
         
     
     func submitAnswers() {
-        questions.questions.forEach() { question in
+        game.questions.forEach() { question in
             let result = question.time * question.table
             let answer = answers[question.index]
             if(answer == result) {
@@ -61,9 +55,11 @@ struct SecondView: View {
 }
 
 struct SecondView_Previews: PreviewProvider {
-    static let numberOfQuestionsPreview = 5
     
     static var previews: some View {
-        SecondView(numberOfQuestions: numberOfQuestionsPreview)
+        ContentView()
+            .environmentObject(Game())
+        SecondView()
     }
 }
+    

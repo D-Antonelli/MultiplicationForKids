@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ThirdView: View {
+   @EnvironmentObject var game: Game
+    
    public var correct = 0
    public var total = 0
    @State private var restart = false

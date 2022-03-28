@@ -32,20 +32,36 @@ struct Question: Identifiable, Hashable, View {
     }
 }
 
-class Questions: ObservableObject {
+class Game: ObservableObject {
     @Published var questions = [Question]()
+    @Published var numberOfQuestions = 0
+    @Published var table = 0
+    
+    func populateQuestions() {
+        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        var times = numbers
+        
+        for i in 1...self.numberOfQuestions {
+         if(times.count < 1) {
+             times = numbers
+            }
+        let randomIndex = Int.random(in: 0..<times.count)
+        let randomTime = times[randomIndex]
+            
+            self.questions.append(Question(table: table, time: randomTime, index: i - 1))
+        times.remove(at: randomIndex)
+        }
+    }
 }
 
 
 struct ContentView: View {
-    @State private var table = 0
-    @State private var numberOfQuestions = 0
     @State private var showSecondView = false
     
-    @StateObject var questions = Questions()
+    @StateObject var game = Game()
     
     public var canStartGame: Bool {
-        return table > 0 && numberOfQuestions > 0
+        return game.table > 0 && game.numberOfQuestions > 0
     }
     
     var body: some View {
@@ -90,7 +106,7 @@ struct ContentView: View {
             
             Section {
                 Button("Start") {
-                    populateQuestions()
+                    game.populateQuestions()
                     showSecondView.toggle()
                 }
                 .disabled(canStartGame == false)
@@ -99,44 +115,28 @@ struct ContentView: View {
             Spacer()
             
             Section {
-                Text("Table selected: \(table)")
-                Text("Questions selected: \(numberOfQuestions)")
+                Text("Table selected: \(game.table)")
+                Text("Questions selected: \(game.numberOfQuestions)")
             }
             
             
             Spacer()
         }
         .sheet(isPresented: $showSecondView) {
-            SecondView(numberOfQuestions: numberOfQuestions)
+            SecondView()
             
         }
-        .environmentObject(questions)
+        .environmentObject(game)
 
-    }
-    
-    func populateQuestions() {
-        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        var times = numbers
-        
-        for i in 1...numberOfQuestions {
-         if(times.count < 1) {
-             times = numbers
-            }
-        let randomIndex = Int.random(in: 0..<times.count)
-        let randomTime = times[randomIndex]
-            
-            questions.questions.append(Question(table: table, time: randomTime, index: i - 1))
-        times.remove(at: randomIndex)
-        }
     }
 
     
     func selectTable(_ number: Int) {
-        table = number
+        game.table = number
     }
     
     func selectNumberOfQuestions(_ number: Int) {
-        numberOfQuestions = number
+        game.numberOfQuestions = number
     }
     
 }
