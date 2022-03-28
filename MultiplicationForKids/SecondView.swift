@@ -57,9 +57,12 @@ struct SecondView: View {
 struct SecondView_Previews: PreviewProvider {
     
     static var previews: some View {
-        ContentView()
-            .environmentObject(Game())
-        SecondView()
+        Group {
+            ContentView()
+            SecondView()
+        }
+        .environmentObject(Game())
+            
     }
 }
     
