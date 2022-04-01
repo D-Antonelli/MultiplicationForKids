@@ -65,7 +65,7 @@ struct SecondView_Previews: PreviewProvider {
             let game = Game()
             game.questions = [Question(table: 1, time: 2, index: 0), Question(table: 1, time: 10, index: 1), Question(table: 1, time: 8, index: 2), Question(table: 1, time: 5, index: 3), Question(table: 1, time: 8, index: 2), Question(table: 1, time: 5, index: 4)]
             return game
-        }() )
+        }())
             
     }
 }

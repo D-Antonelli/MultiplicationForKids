@@ -8,14 +8,32 @@
 import SwiftUI
 
 struct TableSelectionButton: View {
-    public var label: String
+    public var image: String
     public var table: Int
     public var select: (Int) -> Void
 
     
     var body: some View {
-        Button(label) {
+        Button {
             select(table)
+        } label: {
+                Image(decorative: image)
+        }
+    }
+}
+
+
+
+struct Page: View {
+    public var button: TableSelectionButton
+    public var title: String
+    public var subtitle: String
+    
+    var body: some View {
+        VStack {
+            button
+            Text(title)
+            Text(subtitle)
         }
     }
 }
@@ -31,6 +49,8 @@ struct Question: Identifiable, Hashable, View {
         Text("\(table) x \(time) = ")
     }
 }
+
+
 
 class Game: ObservableObject {
     @Published var questions = [Question]()
@@ -58,6 +78,8 @@ class Game: ObservableObject {
 struct ContentView: View {
     @State private var showSecondView = false
     
+    private var animals = ["bear", "chick", "cow", "crocodile", "dog", "panda", "snake", "owl", "monkey", "parrot", "moose", "hippo", "chicken"]
+    
     @StateObject var game = Game()
     
     public var canStartGame: Bool {
@@ -66,25 +88,17 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
+            Text("Hey!")
+            Text("Please select your level friend...")
             Section {
+                TabView {
+                    ForEach(1..<13) {num in
+                        Page(button: TableSelectionButton(image: animals[num], table: num) {num in selectTable(num) }, title: "Level \(num)", subtitle: "with \(animals[num])")
+
+                    }
+                }
+                .tabViewStyle(PageTabViewStyle())
                 Spacer()
-                Text("Table")
-                HStack {
-                    ForEach(1..<5) {num in
-                        TableSelectionButton(label: "\(num)", table: num) {num in selectTable(num) }
-                    }
-                }
-                
-                HStack {
-                    ForEach(5..<9) {num in
-                       TableSelectionButton(label: "\(num)", table: num) {num in selectTable(num) }
-                    }
-                }
-                HStack {
-                    ForEach(9..<13) {num in
-                        TableSelectionButton(label: "\(num)", table: num) {num in selectTable(num) }
-                    }
-                }
             }
             
             Spacer()
@@ -105,7 +119,7 @@ struct ContentView: View {
             Spacer()
             
             Section {
-                Button("Start") {
+                Button("Let's Play!") {
                     game.populateQuestions()
                     showSecondView.toggle()
                 }
@@ -114,10 +128,10 @@ struct ContentView: View {
             
             Spacer()
             
-            Section {
-                Text("Table selected: \(game.table)")
-                Text("Questions selected: \(game.numberOfQuestions)")
-            }
+//            Section {
+//                Text("Table selected: \(game.table)")
+//                Text("Questions selected: \(game.numberOfQuestions)")
+//            }
             
             
             Spacer()
