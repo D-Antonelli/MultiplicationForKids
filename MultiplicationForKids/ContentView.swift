@@ -89,7 +89,13 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Hey!")
+                .font(.largeTitle.bold())
+                .foregroundColor(Color.red)
+            
             Text("Please select your level friend...")
+                .font(.title2.bold())
+                .foregroundColor(Color.white)
+            
             Section {
                 TabView {
                     ForEach(1..<13) {num in
@@ -98,7 +104,6 @@ struct ContentView: View {
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
-                Spacer()
             }
             
             Spacer()
@@ -116,7 +121,6 @@ struct ContentView: View {
                 }
             }
             
-            Spacer()
             
             Section {
                 Button("Let's Play!") {
@@ -126,7 +130,6 @@ struct ContentView: View {
                 .disabled(canStartGame == false)
             }
             
-            Spacer()
             
 //            Section {
 //                Text("Table selected: \(game.table)")
@@ -134,8 +137,8 @@ struct ContentView: View {
 //            }
             
             
-            Spacer()
         }
+        .background(Color.yellow)
         .sheet(isPresented: $showSecondView) {
             SecondView()
             
