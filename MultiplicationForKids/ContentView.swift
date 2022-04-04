@@ -7,6 +7,29 @@
 
 import SwiftUI
 
+extension Font {
+    static let bodyFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.body.size)
+    static let largeTitleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.largeTitle.size)
+}
+
+extension Font.TextStyle {
+    var size: CGFloat {
+        switch self {
+        case .largeTitle: return 37
+        case .title: return 31
+        case .title2: return 25
+        case .title3: return 23
+        case .headline, .body: return 20
+        case .subheadline, .callout: return 19
+        case .footnote: return 16
+        case .caption: return 15
+        case .caption2: return 14
+        @unknown default:
+            return 8
+        }
+    }
+}
+
 struct TableSelectionButton: View {
     public var image: String
     public var table: Int
@@ -89,7 +112,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Hey!")
-                .font(Font.custom("ArialRoundedMTBold", size: 50))
+                .font(.largeTitleFont)
                 .foregroundColor(Color.red)
             
             Text("Please select your level friend...")
@@ -132,7 +155,7 @@ struct ContentView: View {
             
             
         }
-        .font(Font.custom("ArialRoundedMTBold", size: 20))
+        .font(.bodyFont)
         .background(Color.yellow)
         .sheet(isPresented: $showSecondView) {
             SecondView()
@@ -141,7 +164,6 @@ struct ContentView: View {
         .environmentObject(game)
 
     }
-
     
     func selectTable(_ number: Int) {
         game.table = number
