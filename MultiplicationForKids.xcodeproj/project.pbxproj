@@ -13,6 +13,7 @@
 		8AD04B9427D6180600DD55FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD04B9327D6180600DD55FC /* ContentView.swift */; };
 		8AD04B9627D6180800DD55FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD04B9527D6180800DD55FC /* Assets.xcassets */; };
 		8AD04B9927D6180800DD55FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD04B9827D6180800DD55FC /* Preview Assets.xcassets */; };
+		8AF6B69527FADE310017E1EC /* Arial Rounded Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8AF6B69427FADE310017E1EC /* Arial Rounded Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,8 @@
 		8AD04B9327D6180600DD55FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8AD04B9527D6180800DD55FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD04B9827D6180800DD55FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		8AF6B69427FADE310017E1EC /* Arial Rounded Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arial Rounded Bold.ttf"; sourceTree = "<group>"; };
+		8AF6B69627FAF6950017E1EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,8 @@
 		8AD04B9027D6180600DD55FC /* MultiplicationForKids */ = {
 			isa = PBXGroup;
 			children = (
+				8AF6B69627FAF6950017E1EC /* Info.plist */,
+				8AF6B69427FADE310017E1EC /* Arial Rounded Bold.ttf */,
 				8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */,
 				8AD04B9327D6180600DD55FC /* ContentView.swift */,
 				8AD04B9527D6180800DD55FC /* Assets.xcassets */,
@@ -133,6 +138,7 @@
 			files = (
 				8AD04B9927D6180800DD55FC /* Preview Assets.xcassets in Resources */,
 				8AD04B9627D6180800DD55FC /* Assets.xcassets in Resources */,
+				8AF6B69527FADE310017E1EC /* Arial Rounded Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +286,7 @@
 				DEVELOPMENT_TEAM = 2BTZ9TZDG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MultiplicationForKids/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -309,6 +316,7 @@
 				DEVELOPMENT_TEAM = 2BTZ9TZDG6;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = MultiplicationForKids/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

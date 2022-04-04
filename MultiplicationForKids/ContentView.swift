@@ -89,7 +89,7 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Text("Hey!")
-                .font(.largeTitle.bold())
+                .font(Font.custom("ArialRoundedMTBold", size: 50))
                 .foregroundColor(Color.red)
             
             Text("Please select your level friend...")
@@ -131,13 +131,8 @@ struct ContentView: View {
             }
             
             
-//            Section {
-//                Text("Table selected: \(game.table)")
-//                Text("Questions selected: \(game.numberOfQuestions)")
-//            }
-            
-            
         }
+        .font(Font.custom("ArialRoundedMTBold", size: 20))
         .background(Color.yellow)
         .sheet(isPresented: $showSecondView) {
             SecondView()
@@ -162,6 +157,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
+            ContentView()
             ContentView()
         }
     }
