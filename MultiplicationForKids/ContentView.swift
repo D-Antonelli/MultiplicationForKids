@@ -115,16 +115,21 @@ struct ContentView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Hey!")
-                .font(.largeTitleFont)
-                .foregroundColor(Color(red: 1, green: 0.7922, blue: 0.2275))
+        VStack(alignment: .center) {
+            VStack {
+                Text("Hey!")
+                    .font(.largeTitleFont)
+                    .foregroundColor(Color(red: 1, green: 0.7922, blue: 0.2275))
+                
+                Text("Please select your level friend...")
+                    .font(.title2.bold())
+                    .foregroundColor(Color.white)
+            }
             
-            Text("Please select your level friend...")
-                .font(.title2.bold())
-                .foregroundColor(Color.white)
-            
-            Section {
+            VStack(alignment: .center, spacing: 90) {
+                
+                
+                
                 TabView {
                     ForEach(1..<13) {num in
                         Page(button: TableSelectionButton(image: animals[num], table: num) {num in selectTable(num) }, title: "Level \(num)", subtitle: "with \(animals[num])")
@@ -132,50 +137,50 @@ struct ContentView: View {
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
-            }
-            
-            Section {
-                Text("Choose number of questions")
-                    .foregroundColor(Color.white)
-                HStack(alignment: .center, spacing: 25) {
-                    Button {
-                        selectNumberOfQuestions(5)
-                    } label: {
-                        Text("5")
-                            .font(.largeTitleFont)
-                            .foregroundColor(Color(red: 0.5412, green: 0.7882, blue: 0.149))
-                            .padding(15)
-                            .background(.red)
-                            .cornerRadius(10)
-                        
+                
+                
+                VStack {
+                    Text("Choose number of questions")
+                        .foregroundColor(Color.white)
+                    HStack(alignment: .center, spacing: 25) {
+                        Button {
+                            selectNumberOfQuestions(5)
+                        } label: {
+                            Text("5")
+                                .font(.largeTitleFont)
+                                .foregroundColor(Color(red: 0.5412, green: 0.7882, blue: 0.149))
+                                .padding(15)
+                                .background(.red)
+                                .cornerRadius(10)
+                            
+                        }
+                        Button {
+                            selectNumberOfQuestions(10)
+                        } label: {
+                            Text("10")
+                                .font(.largeTitleFont)
+                                .foregroundColor(.pink)
+                                .padding(15)
+                                .background(.yellow)
+                                .cornerRadius(10)
+                        }
+                        Button() {
+                            selectNumberOfQuestions(20)
+                        } label: {
+                            Text("20")
+                                .font(.largeTitleFont)
+                                .foregroundColor(.yellow)
+                                .padding(15)
+                                .background(.blue)
+                                .cornerRadius(10)
+                        }
                     }
-                    Button {
-                        selectNumberOfQuestions(10)
-                    } label: {
-                        Text("10")
-                            .font(.largeTitleFont)
-                            .foregroundColor(.pink)
-                            .padding(15)
-                            .background(.yellow)
-                            .cornerRadius(10)
-                    }
-                    Button() {
-                        selectNumberOfQuestions(20)
-                    } label: {
-                        Text("20")
-                            .font(.largeTitleFont)
-                            .foregroundColor(.yellow)
-                            .padding(15)
-                            .background(.blue)
-                            .cornerRadius(10)
-                    }
+                    
+                    
                 }
                 
                 
-            }
-            
-            
-            Section {
+                
                 Button {
                     game.populateQuestions()
                     showSecondView.toggle()
@@ -189,9 +194,11 @@ struct ContentView: View {
                         .padding(12)
                 }
                 .disabled(canStartGame == false)
+                
             }
             
         }
+        .padding()
         .font(.bodyFont)
         .background(Color(red: 0.4157, green: 0.298, blue: 0.5765))
         .sheet(isPresented: $showSecondView) {
