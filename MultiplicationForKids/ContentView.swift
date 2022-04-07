@@ -147,7 +147,7 @@ struct ContentView: View {
                             .padding(15)
                             .background(.red)
                             .cornerRadius(10)
-                            
+                        
                     }
                     Button {
                         selectNumberOfQuestions(10)
@@ -170,7 +170,7 @@ struct ContentView: View {
                             .cornerRadius(10)
                     }
                 }
-              
+                
                 
             }
             
@@ -190,7 +190,6 @@ struct ContentView: View {
                 }
                 .disabled(canStartGame == false)
             }
-            
             
         }
         .font(.bodyFont)
