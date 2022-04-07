@@ -176,9 +176,17 @@ struct ContentView: View {
             
             
             Section {
-                Button("Let's Play!") {
+                Button {
                     game.populateQuestions()
                     showSecondView.toggle()
+                } label: {
+                    Text("Let's Play!")
+                        .font(.largeTitleFont)
+                        .foregroundColor(.white)
+                        .frame(maxWidth: .infinity, maxHeight: 60)
+                        .overlay(RoundedRectangle(cornerRadius: 30)
+                            .stroke(Color.yellow, lineWidth: 3))
+                        .padding(12)
                 }
                 .disabled(canStartGame == false)
             }
