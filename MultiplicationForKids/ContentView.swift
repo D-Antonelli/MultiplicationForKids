@@ -9,6 +9,8 @@ import SwiftUI
 
 extension Font {
     static let bodyFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.body.size)
+    static let titleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.title.size)
+    static let mediumTitleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.title2.size)
     static let largeTitleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.largeTitle.size)
 }
 
@@ -19,7 +21,7 @@ extension Font.TextStyle {
         case .title: return 31
         case .title2: return 25
         case .title3: return 23
-        case .headline, .body: return 20
+        case .headline, .body: return 22
         case .subheadline, .callout: return 19
         case .footnote: return 16
         case .caption: return 15
@@ -34,13 +36,13 @@ struct TableSelectionButton: View {
     public var image: String
     public var table: Int
     public var select: (Int) -> Void
-
+    
     
     var body: some View {
         Button {
             select(table)
         } label: {
-                Image(decorative: image)
+            Image(decorative: image)
         }
     }
 }
@@ -56,7 +58,10 @@ struct Page: View {
         VStack {
             button
             Text(title)
+                .foregroundColor(Color(red: 1, green: 0.349, blue: 0.3686))
+                .font(.titleFont)
             Text(subtitle)
+                .foregroundColor(.white)
         }
     }
 }
@@ -85,14 +90,14 @@ class Game: ObservableObject {
         var times = numbers
         
         for i in 1...self.numberOfQuestions {
-         if(times.count < 1) {
-             times = numbers
+            if(times.count < 1) {
+                times = numbers
             }
-        let randomIndex = Int.random(in: 0..<times.count)
-        let randomTime = times[randomIndex]
+            let randomIndex = Int.random(in: 0..<times.count)
+            let randomTime = times[randomIndex]
             
             self.questions.append(Question(table: table, time: randomTime, index: i - 1))
-        times.remove(at: randomIndex)
+            times.remove(at: randomIndex)
         }
     }
 }
@@ -113,7 +118,7 @@ struct ContentView: View {
         VStack {
             Text("Hey!")
                 .font(.largeTitleFont)
-                .foregroundColor(Color.red)
+                .foregroundColor(Color(red: 1, green: 0.7922, blue: 0.2275))
             
             Text("Please select your level friend...")
                 .font(.title2.bold())
@@ -123,25 +128,50 @@ struct ContentView: View {
                 TabView {
                     ForEach(1..<13) {num in
                         Page(button: TableSelectionButton(image: animals[num], table: num) {num in selectTable(num) }, title: "Level \(num)", subtitle: "with \(animals[num])")
-
+                        
                     }
                 }
                 .tabViewStyle(PageTabViewStyle())
             }
             
-            Spacer()
-            
             Section {
-                Text("Number of questions")
-                Button("5") {
-                    selectNumberOfQuestions(5)
+                Text("Choose number of questions")
+                    .foregroundColor(Color.white)
+                HStack(alignment: .center, spacing: 25) {
+                    Button {
+                        selectNumberOfQuestions(5)
+                    } label: {
+                        Text("5")
+                            .font(.largeTitleFont)
+                            .foregroundColor(Color(red: 0.5412, green: 0.7882, blue: 0.149))
+                            .padding(15)
+                            .background(.red)
+                            .cornerRadius(10)
+                            
+                    }
+                    Button {
+                        selectNumberOfQuestions(10)
+                    } label: {
+                        Text("10")
+                            .font(.largeTitleFont)
+                            .foregroundColor(.pink)
+                            .padding(15)
+                            .background(.yellow)
+                            .cornerRadius(10)
+                    }
+                    Button() {
+                        selectNumberOfQuestions(20)
+                    } label: {
+                        Text("20")
+                            .font(.largeTitleFont)
+                            .foregroundColor(.yellow)
+                            .padding(15)
+                            .background(.blue)
+                            .cornerRadius(10)
+                    }
                 }
-                Button("10") {
-                    selectNumberOfQuestions(10)
-                }
-                Button("20") {
-                    selectNumberOfQuestions(20)
-                }
+              
+                
             }
             
             
@@ -156,13 +186,13 @@ struct ContentView: View {
             
         }
         .font(.bodyFont)
-        .background(Color.yellow)
+        .background(Color(red: 0.4157, green: 0.298, blue: 0.5765))
         .sheet(isPresented: $showSecondView) {
             SecondView()
             
         }
         .environmentObject(game)
-
+        
     }
     
     func selectTable(_ number: Int) {
