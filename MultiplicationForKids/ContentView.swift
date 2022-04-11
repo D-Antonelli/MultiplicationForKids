@@ -59,11 +59,15 @@ struct Page: View {
     var body: some View {
         VStack {
             button
+            
             Text(title)
                 .foregroundColor(Color(red: 1, green: 0.349, blue: 0.3686))
                 .font(.titleFont)
+            
+            
             Text(subtitle)
                 .foregroundColor(.white)
+            
         }
     }
 }
@@ -128,7 +132,7 @@ struct ContentView: View {
                     .foregroundColor(Color.white)
             }
             
-            VStack(alignment: .center, spacing: 90) {
+            VStack(alignment: .center) {
                 
                 
                 
