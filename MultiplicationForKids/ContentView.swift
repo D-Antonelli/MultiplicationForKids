@@ -9,50 +9,6 @@ import SwiftUI
 
 //https://coolors.co/palette/ff595e-ffca3a-8ac926-1982c4-6a4c93
 
-extension Font {
-    static let bodyFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.body.size)
-    static let titleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.title.size)
-    static let mediumTitleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.title2.size)
-    static let largeTitleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.largeTitle.size)
-}
-
-extension Font.TextStyle {
-    var size: CGFloat {
-        switch self {
-        case .largeTitle: return 37
-        case .title: return 31
-        case .title2: return 25
-        case .title3: return 23
-        case .headline, .body: return 22
-        case .subheadline, .callout: return 19
-        case .footnote: return 16
-        case .caption: return 15
-        case .caption2: return 14
-        @unknown default:
-            return 8
-        }
-    }
-}
-
-struct TableSelectionButton: View {
-    public var image: String
-    public var table: Int
-    public var select: (Int) -> Void
-    
-    
-    var body: some View {
-        Button {
-            select(table)
-        } label: {
-            Image(decorative: image)
-                .resizable()
-                .scaledToFit()
-                .frame(maxHeight: 180)
-        }
-    }
-}
-
-
 
 struct Page: View {
     public var button: TableSelectionButton
@@ -74,41 +30,6 @@ struct Page: View {
     }
 }
 
-
-struct Question: Identifiable, Hashable, View {
-    let table: Int
-    let time: Int
-    let index: Int
-    let id = UUID()
-    
-    var body: some View {
-        Text("\(table) x \(time) = ")
-    }
-}
-
-
-
-class Game: ObservableObject {
-    @Published var questions = [Question]()
-    @Published var numberOfQuestions = 0
-    @Published var table = 0
-    
-    func populateQuestions() {
-        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-        var times = numbers
-        
-        for i in 1...self.numberOfQuestions {
-            if(times.count < 1) {
-                times = numbers
-            }
-            let randomIndex = Int.random(in: 0..<times.count)
-            let randomTime = times[randomIndex]
-            
-            self.questions.append(Question(table: table, time: randomTime, index: i - 1))
-            times.remove(at: randomIndex)
-        }
-    }
-}
 
 
 struct ContentView: View {
