@@ -8,7 +8,7 @@
 import SwiftUI
 
 //https://coolors.co/palette/ff595e-ffca3a-8ac926-1982c4-6a4c93
-
+    
 
 struct Page: View {
     public var button: TableSelectionButton
@@ -129,6 +129,7 @@ struct ContentView: View {
                         .overlay(RoundedRectangle(cornerRadius: 30)
                             .stroke(Color.yellow, lineWidth: 3))
                         .padding(12)
+                        .opacity(canStartGame == false ? 0.4 : 1.0)
                 }
                 .disabled(canStartGame == false)
                 
