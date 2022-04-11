@@ -63,12 +63,11 @@ struct Page: View {
             Text(title)
                 .foregroundColor(Color(red: 1, green: 0.349, blue: 0.3686))
                 .font(.titleFont)
-            
-            
             Text(subtitle)
                 .foregroundColor(.white)
             
         }
+        .padding(.bottom)
     }
 }
 
@@ -132,18 +131,23 @@ struct ContentView: View {
                     .foregroundColor(Color.white)
             }
             
-            VStack(alignment: .center) {
-                
-                
-                
+            VStack {
                 TabView {
                     ForEach(1..<13) {num in
                         Page(button: TableSelectionButton(image: animals[num], table: num) {num in selectTable(num) }, title: "\(num) x", subtitle: "with \(animals[num])")
                         
+                            .tabItem {
+                                Label("\(num)", systemImage: "\(num).circle")
+                            }
+                        
                     }
                 }
+            
                 .tabViewStyle(PageTabViewStyle())
+                .frame(maxHeight: 350)
                 
+                
+                Spacer()
                 
                 VStack {
                     Text("Choose number of questions")
@@ -186,7 +190,7 @@ struct ContentView: View {
                 }
                 
                 
-                
+                Spacer()
                 Button {
                     game.populateQuestions()
                     showSecondView.toggle()
