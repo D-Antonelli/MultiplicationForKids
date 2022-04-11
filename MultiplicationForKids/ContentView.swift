@@ -45,6 +45,9 @@ struct TableSelectionButton: View {
             select(table)
         } label: {
             Image(decorative: image)
+                .resizable()
+                .scaledToFit()
+                .frame(maxHeight: 180)
         }
     }
 }
@@ -65,9 +68,9 @@ struct Page: View {
                 .font(.titleFont)
             Text(subtitle)
                 .foregroundColor(.white)
-            
+            Spacer()
         }
-        .padding(.bottom)
+        
     }
 }
 
@@ -130,6 +133,9 @@ struct ContentView: View {
                     .font(.title2.bold())
                     .foregroundColor(Color.white)
             }
+            Spacer()
+            Spacer()
+            Spacer()
             
             VStack {
                 TabView {
@@ -142,9 +148,9 @@ struct ContentView: View {
                         
                     }
                 }
-            
+                
                 .tabViewStyle(PageTabViewStyle())
-                .frame(maxHeight: 350)
+                .frame(maxHeight: 320)
                 
                 
                 Spacer()
