@@ -7,6 +7,8 @@
 
 import SwiftUI
 
+//https://coolors.co/palette/ff595e-ffca3a-8ac926-1982c4-6a4c93
+
 extension Font {
     static let bodyFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.body.size)
     static let titleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.title.size)
@@ -121,7 +123,7 @@ struct ContentView: View {
                     .font(.largeTitleFont)
                     .foregroundColor(Color(red: 1, green: 0.7922, blue: 0.2275))
                 
-                Text("Please select your level friend...")
+                Text("Please select your table...")
                     .font(.title2.bold())
                     .foregroundColor(Color.white)
             }
@@ -132,7 +134,7 @@ struct ContentView: View {
                 
                 TabView {
                     ForEach(1..<13) {num in
-                        Page(button: TableSelectionButton(image: animals[num], table: num) {num in selectTable(num) }, title: "Level \(num)", subtitle: "with \(animals[num])")
+                        Page(button: TableSelectionButton(image: animals[num], table: num) {num in selectTable(num) }, title: "\(num) x", subtitle: "with \(animals[num])")
                         
                     }
                 }
@@ -148,7 +150,7 @@ struct ContentView: View {
                         } label: {
                             Text("5")
                                 .font(.largeTitleFont)
-                                .foregroundColor(Color(red: 0.5412, green: 0.7882, blue: 0.149))
+                                .foregroundColor(.white)
                                 .padding(15)
                                 .background(.red)
                                 .cornerRadius(10)
