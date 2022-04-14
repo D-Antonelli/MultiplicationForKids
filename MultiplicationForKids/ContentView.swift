@@ -21,6 +21,7 @@ struct ContentView: View {
     }
     
     var body: some View {
+        NavigationView {
         VStack(alignment: .center) {
             VStack {
                 Text("Hey!")
@@ -95,6 +96,7 @@ struct ContentView: View {
                 
                 
                 Spacer()
+                NavigationLink(destination: SecondView().environmentObject(game), isActive: $showSecondView) { EmptyView() }
                 Button {
                     game.populateQuestions()
                     showSecondView.toggle()
@@ -116,11 +118,13 @@ struct ContentView: View {
         .padding()
         .font(.bodyFont)
         .background(Color(red: 0.4157, green: 0.298, blue: 0.5765))
-        .sheet(isPresented: $showSecondView) {
-            SecondView()
-            
-        }
-        .environmentObject(game)
+//        .sheet(isPresented: $showSecondView) {
+//            SecondView()
+//
+//        }
+//        .environmentObject(game)
+        
+    }
         
     }
     
