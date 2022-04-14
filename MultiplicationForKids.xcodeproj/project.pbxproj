@@ -13,6 +13,7 @@
 		8A972CA328043EB70080C25F /* TableSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA228043EB70080C25F /* TableSelectionButton.swift */; };
 		8A972CA5280444590080C25F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA4280444590080C25F /* Question.swift */; };
 		8A972CA7280444910080C25F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA6280444910080C25F /* Game.swift */; };
+		8AA9B8892808079D007389F4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9B8882808079D007389F4 /* Page.swift */; };
 		8AD04B9227D6180600DD55FC /* MultiplicationForKidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */; };
 		8AD04B9427D6180600DD55FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD04B9327D6180600DD55FC /* ContentView.swift */; };
 		8AD04B9627D6180800DD55FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD04B9527D6180800DD55FC /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 		8A972CA228043EB70080C25F /* TableSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSelectionButton.swift; sourceTree = "<group>"; };
 		8A972CA4280444590080C25F /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		8A972CA6280444910080C25F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
+		8AA9B8882808079D007389F4 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		8AD04B8E27D6180600DD55FC /* MultiplicationForKids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiplicationForKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationForKidsApp.swift; sourceTree = "<group>"; };
 		8AD04B9327D6180600DD55FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				8AF6B69427FADE310017E1EC /* Arial Rounded Bold.ttf */,
 				8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */,
 				8AD04B9327D6180600DD55FC /* ContentView.swift */,
+				8AA9B8882808079D007389F4 /* Page.swift */,
 				8A972CA6280444910080C25F /* Game.swift */,
 				8A972CA4280444590080C25F /* Question.swift */,
 				8A972CA228043EB70080C25F /* TableSelectionButton.swift */,
@@ -166,6 +169,7 @@
 				8A81C34C27DB658C00DDDC21 /* SecondView.swift in Sources */,
 				8A972CA128043E640080C25F /* Font.swift in Sources */,
 				8AD04B9427D6180600DD55FC /* ContentView.swift in Sources */,
+				8AA9B8892808079D007389F4 /* Page.swift in Sources */,
 				8A972CA5280444590080C25F /* Question.swift in Sources */,
 				8AD04B9227D6180600DD55FC /* MultiplicationForKidsApp.swift in Sources */,
 				8A972CA7280444910080C25F /* Game.swift in Sources */,
