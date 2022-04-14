@@ -10,19 +10,21 @@ import SwiftUI
 struct ThirdView: View {
    @EnvironmentObject var game: Game
     
+   @EnvironmentObject var screenCoordinator: ScreenCoordinator
+    
    public var correct = 0
    public var total = 0
-   @State private var restart = false
     
     var body: some View {
-        VStack {
-            Text("You've answered \(correct) out of \(total) questions correctly!")
-            Button("Restart game") {
-                restart = true
+        NavigationView {
+            VStack {
+                Text("You've answered \(correct) out of \(total) questions correctly!")
+                NavigationLink(destination: ContentView(), tag: ScreenCoordinator.PushedItem.firstScreen, selection: $screenCoordinator.selectedPushedItem) {EmptyView()}
+                Button("Restart game") {
+                    screenCoordinator.selectedPushedItem = ScreenCoordinator.PushedItem.firstScreen
+                }
             }
-        }
-        .sheet(isPresented: $restart) {
-            ContentView()
+            .navigationBarHidden(true)
         }
     }
 }
@@ -33,5 +35,6 @@ struct ThirdView_Previews: PreviewProvider {
     
     static var previews: some View {
         ThirdView(correct: correctPreview, total: totalPreview)
+            .environmentObject(ScreenCoordinator().self)
     }
 }

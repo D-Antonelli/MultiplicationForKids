@@ -9,12 +9,45 @@ import SwiftUI
 
 //https://coolors.co/palette/ff595e-ffca3a-8ac926-1982c4-6a4c93
 
+final class ScreenCoordinator: ObservableObject {
+    @Published var selectedTabItem: Int = 0
+    @Published var selectedPushedItem: PushedItem?
+    @Published var isPresented: Bool = false
+    
+    enum PushedItem: String {
+        case firstScreen
+        case secondScreen
+        case thirdScreen
+    }
+}
+
+
+class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+    var window: UIWindow?
+    var screenCoordinator = ScreenCoordinator()
+    
+    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+        
+        let contentView = ContentView().environmentObject(screenCoordinator)
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = UIHostingController(rootView: contentView)
+            self.window = window
+            window.makeKeyAndVisible()
+        }
+    }
+}
+
+
 struct ContentView: View {
+    @EnvironmentObject var screenCoordinator: ScreenCoordinator
+    
     @State private var showSecondView = false
     
     private var animals = ["bear", "chick", "cow", "crocodile", "dog", "panda", "snake", "owl", "monkey", "parrot", "moose", "hippo", "chicken"]
     
     @StateObject var game = Game()
+    
     
     public var canStartGame: Bool {
         return game.table > 0 && game.numberOfQuestions > 0
@@ -96,10 +129,10 @@ struct ContentView: View {
                     
                     
                     Spacer()
-                    NavigationLink(destination: SecondView().environmentObject(game), isActive: $showSecondView) { EmptyView() }
+                    NavigationLink(destination: SecondView().environmentObject(game).environmentObject(ScreenCoordinator().self), tag: ScreenCoordinator.PushedItem.secondScreen, selection: $screenCoordinator.selectedPushedItem) { EmptyView() }
                     Button {
                         game.populateQuestions()
-                        showSecondView.toggle()
+                        screenCoordinator.selectedPushedItem = ScreenCoordinator.PushedItem.secondScreen
                     } label: {
                         Text("Let's Play!")
                             .font(.largeTitleFont)
@@ -140,6 +173,6 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
             ContentView()
-        }
+        }.environmentObject(ScreenCoordinator.init().self)
     }
 }
