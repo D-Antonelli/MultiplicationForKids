@@ -22,109 +22,105 @@ struct ContentView: View {
     
     var body: some View {
         NavigationView {
-        VStack(alignment: .center) {
-            VStack {
-                Text("Hey!")
-                    .font(.largeTitleFont)
-                    .foregroundColor(Color(red: 1, green: 0.7922, blue: 0.2275))
-                
-                Text("Please select your table...")
-                    .font(.title2.bold())
-                    .foregroundColor(Color.white)
-            }
-            Spacer()
-            Spacer()
-            Spacer()
-            
-            VStack {
-                TabView {
-                    ForEach(1..<13) {num in
-                        Page(button: TableSelectionButton(image: animals[num], table: num) {num in selectTable(num) }, title: "\(num) x", subtitle: "with \(animals[num])")
-                        
-                            .tabItem {
-                                Label("\(num)", systemImage: "\(num).circle")
-                            }
-                        
-                    }
+            VStack(alignment: .center) {
+                VStack {
+                    Text("Hey!")
+                        .font(.largeTitleFont)
+                        .foregroundColor(Color(red: 1, green: 0.7922, blue: 0.2275))
+                    
+                    Text("Please select your times table...")
+                        .font(.title2.bold())
+                        .foregroundColor(Color.white)
                 }
-                
-                .tabViewStyle(PageTabViewStyle())
-                .frame(maxHeight: 320)
-                
-                
+                Spacer()
+                Spacer()
                 Spacer()
                 
                 VStack {
-                    Text("Choose number of questions")
-                        .foregroundColor(Color.white)
-                    HStack(alignment: .center, spacing: 25) {
-                        Button {
-                            selectNumberOfQuestions(5)
-                        } label: {
-                            Text("5")
-                                .font(.largeTitleFont)
-                                .foregroundColor(.white)
-                                .padding(15)
-                                .background(.red)
-                                .cornerRadius(10)
+                    TabView {
+                        ForEach(1..<13) {num in
+                            Page(button: TableSelectionButton(image: animals[num], table: num) {num in selectTable(num) }, title: "\(num) x", subtitle: "with \(animals[num])")
                             
-                        }
-                        Button {
-                            selectNumberOfQuestions(10)
-                        } label: {
-                            Text("10")
-                                .font(.largeTitleFont)
-                                .foregroundColor(.pink)
-                                .padding(15)
-                                .background(.yellow)
-                                .cornerRadius(10)
-                        }
-                        Button() {
-                            selectNumberOfQuestions(20)
-                        } label: {
-                            Text("20")
-                                .font(.largeTitleFont)
-                                .foregroundColor(.yellow)
-                                .padding(15)
-                                .background(.blue)
-                                .cornerRadius(10)
+                                .tabItem {
+                                    Label("\(num)", systemImage: "\(num).circle")
+                                }
+                            
                         }
                     }
                     
+                    .tabViewStyle(PageTabViewStyle())
+                    .frame(maxHeight: 320)
+                    
+                    
+                    Spacer()
+                    
+                    VStack {
+                        Text("Choose number of questions")
+                            .foregroundColor(Color.white)
+                        HStack(alignment: .center, spacing: 25) {
+                            Button {
+                                selectNumberOfQuestions(5)
+                            } label: {
+                                Text("5")
+                                    .font(.largeTitleFont)
+                                    .foregroundColor(.white)
+                                    .padding(15)
+                                    .background(.red)
+                                    .cornerRadius(10)
+                                
+                            }
+                            Button {
+                                selectNumberOfQuestions(10)
+                            } label: {
+                                Text("10")
+                                    .font(.largeTitleFont)
+                                    .foregroundColor(.pink)
+                                    .padding(15)
+                                    .background(.yellow)
+                                    .cornerRadius(10)
+                            }
+                            Button() {
+                                selectNumberOfQuestions(20)
+                            } label: {
+                                Text("20")
+                                    .font(.largeTitleFont)
+                                    .foregroundColor(.yellow)
+                                    .padding(15)
+                                    .background(.blue)
+                                    .cornerRadius(10)
+                            }
+                        }
+                        
+                        
+                    }
+                    
+                    
+                    Spacer()
+                    NavigationLink(destination: SecondView().environmentObject(game), isActive: $showSecondView) { EmptyView() }
+                    Button {
+                        game.populateQuestions()
+                        showSecondView.toggle()
+                    } label: {
+                        Text("Let's Play!")
+                            .font(.largeTitleFont)
+                            .foregroundColor(.white)
+                            .frame(maxWidth: .infinity, maxHeight: 60)
+                            .overlay(RoundedRectangle(cornerRadius: 30)
+                                .stroke(Color.yellow, lineWidth: 3))
+                            .padding(12)
+                            .opacity(canStartGame == false ? 0.4 : 1.0)
+                    }
+                    .disabled(canStartGame == false)
                     
                 }
                 
-                
-                Spacer()
-                NavigationLink(destination: SecondView().environmentObject(game), isActive: $showSecondView) { EmptyView() }
-                Button {
-                    game.populateQuestions()
-                    showSecondView.toggle()
-                } label: {
-                    Text("Let's Play!")
-                        .font(.largeTitleFont)
-                        .foregroundColor(.white)
-                        .frame(maxWidth: .infinity, maxHeight: 60)
-                        .overlay(RoundedRectangle(cornerRadius: 30)
-                            .stroke(Color.yellow, lineWidth: 3))
-                        .padding(12)
-                        .opacity(canStartGame == false ? 0.4 : 1.0)
-                }
-                .disabled(canStartGame == false)
-                
             }
+            .navigationBarHidden(true)
+            .padding()
+            .font(.bodyFont)
+            .background(Color(red: 0.4157, green: 0.298, blue: 0.5765))
             
         }
-        .padding()
-        .font(.bodyFont)
-        .background(Color(red: 0.4157, green: 0.298, blue: 0.5765))
-//        .sheet(isPresented: $showSecondView) {
-//            SecondView()
-//
-//        }
-//        .environmentObject(game)
-        
-    }
         
     }
     

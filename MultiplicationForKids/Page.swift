@@ -21,7 +21,9 @@ struct Page: View {
                 .font(.titleFont)
             Text(subtitle)
                 .foregroundColor(.white)
+            
             Spacer()
+           
         }
         
     }
