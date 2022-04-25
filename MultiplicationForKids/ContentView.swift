@@ -9,38 +9,51 @@ import SwiftUI
 
 //https://coolors.co/palette/ff595e-ffca3a-8ac926-1982c4-6a4c93
 
-final class ScreenCoordinator: ObservableObject {
-    @Published var selectedTabItem: Int = 0
-    @Published var selectedPushedItem: PushedItem?
-    @Published var isPresented: Bool = false
-    
-    enum PushedItem: String {
-        case firstScreen
-        case secondScreen
-        case thirdScreen
-    }
-}
+//final class ScreenCoordinator: ObservableObject {
+//    @Published var selectedTabItem: Int = 0
+//    @Published var selectedPushedItem: PushedItem?
+//    @Published var isPresented: Bool = false
+//
+//    enum PushedItem: String {
+//        case firstScreen
+//        case secondScreen
+//        case thirdScreen
+//    }
+//}
 
 
-class SceneDelegate: UIResponder, UIWindowSceneDelegate {
-    var window: UIWindow?
-    var screenCoordinator = ScreenCoordinator()
-    
-    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        
-        let contentView = ContentView().environmentObject(screenCoordinator)
-        if let windowScene = scene as? UIWindowScene {
-            let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
-            self.window = window
-            window.makeKeyAndVisible()
-        }
+//class SceneDelegate: UIResponder, UIWindowSceneDelegate {
+//    var window: UIWindow?
+//    var screenCoordinator = ScreenCoordinator()
+//
+//    func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
+//
+//        let contentView = ContentView().environmentObject(screenCoordinator)
+//        if let windowScene = scene as? UIWindowScene {
+//            let window = UIWindow(windowScene: windowScene)
+//            window.rootViewController = UIHostingController(rootView: contentView)
+//            self.window = window
+//            window.makeKeyAndVisible()
+//        }
+//    }
+//}
+
+
+class NavigationModel: ObservableObject {
+
+    @Published var view1IsActive = false
+    @Published var view2IsActive = false
+    @Published var view3IsActive = false
+
+    func returnToView1() {
+        view2IsActive.toggle()
+        view3IsActive.toggle()
     }
 }
 
 
 struct ContentView: View {
-    @EnvironmentObject var screenCoordinator: ScreenCoordinator
+    @EnvironmentObject var navModel: NavigationModel
     
     @State private var showSecondView = false
     
@@ -129,10 +142,13 @@ struct ContentView: View {
                     
                     
                     Spacer()
-                    NavigationLink(destination: SecondView().environmentObject(game).environmentObject(ScreenCoordinator().self), tag: ScreenCoordinator.PushedItem.secondScreen, selection: $screenCoordinator.selectedPushedItem) { EmptyView() }
+                    NavigationLink(destination: SecondView().environmentObject(game), isActive: $navModel.view2IsActive ) { EmptyView()
+                    }
+                    .isDetailLink(false)
                     Button {
                         game.populateQuestions()
-                        screenCoordinator.selectedPushedItem = ScreenCoordinator.PushedItem.secondScreen
+                        navModel.view2IsActive = true
+                    
                     } label: {
                         Text("Let's Play!")
                             .font(.largeTitleFont)
@@ -146,7 +162,6 @@ struct ContentView: View {
                     .disabled(canStartGame == false)
                     
                 }
-                
             }
             .navigationBarHidden(true)
             .padding()
@@ -173,6 +188,7 @@ struct ContentView_Previews: PreviewProvider {
         Group {
             ContentView()
             ContentView()
-        }.environmentObject(ScreenCoordinator.init().self)
+        }
+        .environmentObject(NavigationModel())
     }
 }

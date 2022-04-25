@@ -12,8 +12,9 @@ struct MultiplicationForKidsApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
-                .environmentObject(ScreenCoordinator())
+                .environmentObject(NavigationModel())
         }
     }
 }
+
 
