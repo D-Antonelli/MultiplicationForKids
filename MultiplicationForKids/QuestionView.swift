@@ -29,18 +29,15 @@ struct QuestionView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: ResultView(correct: correctAnswers, total: game.numberOfQuestions), isActive: $navModel.view3IsActive) { EmptyView()
+                NavigationLink(destination: ResultView(correct: correctAnswers, total: game.numberOfQuestions), isActive: $navModel.ResultViewIsActive) { EmptyView()
                 }
                 .isDetailLink(false)
                     
                 Button("Submit") {
                     submitAnswers()
-                
-                    navModel.view3IsActive.toggle()
+                    navModel.goToResultView()
                 }
             }
-            
-        
        
     }
     

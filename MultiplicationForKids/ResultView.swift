@@ -20,8 +20,7 @@ struct ResultView: View {
                 Text("You've answered \(correct) out of \(total) questions correctly!")
                
                 Button("Restart game") {
-                    navModel.view2IsActive.toggle()
-                    navModel.view1IsActive.toggle()
+                    navModel.returnToAppStartView()
                 }
             }
         }
