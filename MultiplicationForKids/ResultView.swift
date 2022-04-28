@@ -1,5 +1,5 @@
 //
-//  ThirdView.swift
+//  ResultView.swift
 //  MultiplicationForKids
 //
 //  Created by Derya Antonelli on 25/03/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ThirdView: View {
+struct ResultView: View {
    @EnvironmentObject var game: Game
     
    @EnvironmentObject var navModel: NavigationModel
@@ -20,18 +20,19 @@ struct ThirdView: View {
                 Text("You've answered \(correct) out of \(total) questions correctly!")
                
                 Button("Restart game") {
-                    navModel.returnToView1()
+                    navModel.view2IsActive.toggle()
+                    navModel.view1IsActive.toggle()
                 }
             }
         }
 }
 
-struct ThirdView_Previews: PreviewProvider {
+struct ResultView_Previews: PreviewProvider {
     static let correctPreview = 5
     static let totalPreview = 10
     
     static var previews: some View {
-        ThirdView(correct: correctPreview, total: totalPreview)
+        ResultView(correct: correctPreview, total: totalPreview)
             .environmentObject(NavigationModel())
     }
 }

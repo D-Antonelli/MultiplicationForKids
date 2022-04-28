@@ -1,5 +1,5 @@
 //
-//  SecondView.swift
+//  QuestionView.swift
 //  MultiplicationForKids
 //
 //  Created by Derya Antonelli on 11/03/2022.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct SecondView: View {
+struct QuestionView: View {
     @EnvironmentObject var game: Game
     
     @EnvironmentObject var navModel: NavigationModel
@@ -29,12 +29,13 @@ struct SecondView: View {
                 
                 Spacer()
                 
-                NavigationLink(destination: ThirdView(correct: correctAnswers, total: game.numberOfQuestions), isActive: $navModel.view3IsActive) { EmptyView()
+                NavigationLink(destination: ResultView(correct: correctAnswers, total: game.numberOfQuestions), isActive: $navModel.view3IsActive) { EmptyView()
                 }
                 .isDetailLink(false)
                     
                 Button("Submit") {
                     submitAnswers()
+                
                     navModel.view3IsActive.toggle()
                 }
             }
@@ -55,12 +56,12 @@ struct SecondView: View {
     }
 }
 
-struct SecondView_Previews: PreviewProvider {
+struct QuestionView_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            ContentView()
-            SecondView()
+            AppStartView()
+            QuestionView()
         }
         .environmentObject({ () -> Game in
             let game = Game()

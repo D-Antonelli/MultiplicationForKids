@@ -7,23 +7,23 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A057D1627EDB8EE00129E6B /* ThirdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A057D1527EDB8EE00129E6B /* ThirdView.swift */; };
-		8A81C34C27DB658C00DDDC21 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C34B27DB658C00DDDC21 /* SecondView.swift */; };
+		8A057D1627EDB8EE00129E6B /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A057D1527EDB8EE00129E6B /* ResultView.swift */; };
+		8A81C34C27DB658C00DDDC21 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C34B27DB658C00DDDC21 /* QuestionView.swift */; };
 		8A972CA128043E640080C25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA028043E640080C25F /* Font.swift */; };
 		8A972CA328043EB70080C25F /* TableSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA228043EB70080C25F /* TableSelectionButton.swift */; };
 		8A972CA5280444590080C25F /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA4280444590080C25F /* Question.swift */; };
 		8A972CA7280444910080C25F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA6280444910080C25F /* Game.swift */; };
 		8AA9B8892808079D007389F4 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9B8882808079D007389F4 /* Page.swift */; };
 		8AD04B9227D6180600DD55FC /* MultiplicationForKidsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */; };
-		8AD04B9427D6180600DD55FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD04B9327D6180600DD55FC /* ContentView.swift */; };
+		8AD04B9427D6180600DD55FC /* AppStartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD04B9327D6180600DD55FC /* AppStartView.swift */; };
 		8AD04B9627D6180800DD55FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD04B9527D6180800DD55FC /* Assets.xcassets */; };
 		8AD04B9927D6180800DD55FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AD04B9827D6180800DD55FC /* Preview Assets.xcassets */; };
 		8AF6B69527FADE310017E1EC /* Arial Rounded Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8AF6B69427FADE310017E1EC /* Arial Rounded Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8A057D1527EDB8EE00129E6B /* ThirdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThirdView.swift; sourceTree = "<group>"; };
-		8A81C34B27DB658C00DDDC21 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
+		8A057D1527EDB8EE00129E6B /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		8A81C34B27DB658C00DDDC21 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		8A972CA028043E640080C25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8A972CA228043EB70080C25F /* TableSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSelectionButton.swift; sourceTree = "<group>"; };
 		8A972CA4280444590080C25F /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
@@ -31,7 +31,7 @@
 		8AA9B8882808079D007389F4 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 		8AD04B8E27D6180600DD55FC /* MultiplicationForKids.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MultiplicationForKids.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiplicationForKidsApp.swift; sourceTree = "<group>"; };
-		8AD04B9327D6180600DD55FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8AD04B9327D6180600DD55FC /* AppStartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStartView.swift; sourceTree = "<group>"; };
 		8AD04B9527D6180800DD55FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8AD04B9827D6180800DD55FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8AF6B69427FADE310017E1EC /* Arial Rounded Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Arial Rounded Bold.ttf"; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 				8AF6B69627FAF6950017E1EC /* Info.plist */,
 				8AF6B69427FADE310017E1EC /* Arial Rounded Bold.ttf */,
 				8AD04B9127D6180600DD55FC /* MultiplicationForKidsApp.swift */,
-				8AD04B9327D6180600DD55FC /* ContentView.swift */,
+				8AD04B9327D6180600DD55FC /* AppStartView.swift */,
 				8AA9B8882808079D007389F4 /* Page.swift */,
 				8A972CA6280444910080C25F /* Game.swift */,
 				8A972CA4280444590080C25F /* Question.swift */,
@@ -79,8 +79,8 @@
 				8A972CA028043E640080C25F /* Font.swift */,
 				8AD04B9527D6180800DD55FC /* Assets.xcassets */,
 				8AD04B9727D6180800DD55FC /* Preview Content */,
-				8A81C34B27DB658C00DDDC21 /* SecondView.swift */,
-				8A057D1527EDB8EE00129E6B /* ThirdView.swift */,
+				8A81C34B27DB658C00DDDC21 /* QuestionView.swift */,
+				8A057D1527EDB8EE00129E6B /* ResultView.swift */,
 			);
 			path = MultiplicationForKids;
 			sourceTree = "<group>";
@@ -164,11 +164,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A057D1627EDB8EE00129E6B /* ThirdView.swift in Sources */,
+				8A057D1627EDB8EE00129E6B /* ResultView.swift in Sources */,
 				8A972CA328043EB70080C25F /* TableSelectionButton.swift in Sources */,
-				8A81C34C27DB658C00DDDC21 /* SecondView.swift in Sources */,
+				8A81C34C27DB658C00DDDC21 /* QuestionView.swift in Sources */,
 				8A972CA128043E640080C25F /* Font.swift in Sources */,
-				8AD04B9427D6180600DD55FC /* ContentView.swift in Sources */,
+				8AD04B9427D6180600DD55FC /* AppStartView.swift in Sources */,
 				8AA9B8892808079D007389F4 /* Page.swift in Sources */,
 				8A972CA5280444590080C25F /* Question.swift in Sources */,
 				8AD04B9227D6180600DD55FC /* MultiplicationForKidsApp.swift in Sources */,

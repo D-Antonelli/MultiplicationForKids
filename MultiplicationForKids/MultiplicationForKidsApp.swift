@@ -11,7 +11,7 @@ import SwiftUI
 struct MultiplicationForKidsApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AppStartView()
                 .environmentObject(NavigationModel())
         }
     }
