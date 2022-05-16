@@ -10,8 +10,15 @@ import SwiftUI
 
 class Game: ObservableObject {
     @Published var questions = [Question]()
+    @Published var results = [Int]()
+    @Published var maxTime = 12
     @Published var numberOfQuestions = 0
     @Published var table = 0
+    
+    func initGame() {
+        populateQuestions()
+        populateResults()
+    }
     
     func populateQuestions() {
         let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
@@ -26,6 +33,15 @@ class Game: ObservableObject {
             
             self.questions.append(Question(table: table, time: randomTime, index: i - 1))
             times.remove(at: randomIndex)
+        }
+    }
+    
+    
+    func populateResults() {
+        self.questions.forEach() { question in
+            let result = question.time * question.table
+            self.results.append(result)
+            
         }
     }
 }

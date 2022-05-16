@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ResultView: View {
+   @State var navigationBarBackButtonHidden = true
+    
    @EnvironmentObject var game: Game
     
    @EnvironmentObject var navModel: NavigationModel
@@ -20,9 +22,12 @@ struct ResultView: View {
                 Text("You've answered \(correct) out of \(total) questions correctly!")
                
                 Button("Restart game") {
+                    self.navigationBarBackButtonHidden = false
                     navModel.returnToAppStartView()
                 }
             }
+            .navigationBarHidden(true)
+            .navigationBarBackButtonHidden(navigationBarBackButtonHidden)
         }
 }
 
