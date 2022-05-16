@@ -29,11 +29,13 @@ struct QuestionView: View {
             }
             
             HStack {
-                
-            }
-            
-            HStack {
-                Text("Result is \(game.results[question])")
+                ForEach(multipleSelectionList, id: \.self) { num in
+                    Button {
+                        
+                    } label: {
+                        Text("\(num)")
+                    }
+                }
             }
         }
         .onAppear() {
