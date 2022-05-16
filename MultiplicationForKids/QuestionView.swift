@@ -40,25 +40,11 @@ struct QuestionView: View {
             let min = game.questions[question].table
             let max = min * 12
             let correctAnswer = game.results[question]
-            self.multipleSelectionList = generateRandomNumbers(min: min, max: max, size: 7, include: correctAnswer)
-            print(self.multipleSelectionList.shuffled())
+            self.multipleSelectionList = Helpers.generateRandomNumbers(min: min, max: max, size: 7, include: correctAnswer)
+            print(self.multipleSelectionList)
             
         }
         
-    }
-    func generateRandomNumbers(min: Int, max: Int, size: Int, include: Int) -> [Int] {
-        
-        var values = Array(min...max).filter { $0 != include }
-        var result = [Int]()
-        
-        result.append(include)
-        
-        for _ in 1..<size {
-            let randomIndex = Int.random(in: 0..<values.count)
-            result.append(values[randomIndex])
-            values.remove(at: randomIndex)
-        }
-        return result
     }
         
 //            VStack {

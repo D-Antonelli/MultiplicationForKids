@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A057D1627EDB8EE00129E6B /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A057D1527EDB8EE00129E6B /* ResultView.swift */; };
+		8A43BCE32832625B00593F52 /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A43BCE22832625A00593F52 /* Helpers.swift */; };
 		8A81C34C27DB658C00DDDC21 /* QuestionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A81C34B27DB658C00DDDC21 /* QuestionView.swift */; };
 		8A972CA128043E640080C25F /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA028043E640080C25F /* Font.swift */; };
 		8A972CA328043EB70080C25F /* TableSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A972CA228043EB70080C25F /* TableSelectionButton.swift */; };
@@ -24,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		8A057D1527EDB8EE00129E6B /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
+		8A43BCE22832625A00593F52 /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		8A81C34B27DB658C00DDDC21 /* QuestionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionView.swift; sourceTree = "<group>"; };
 		8A972CA028043E640080C25F /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8A972CA228043EB70080C25F /* TableSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSelectionButton.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 				8A81C34B27DB658C00DDDC21 /* QuestionView.swift */,
 				8A057D1527EDB8EE00129E6B /* ResultView.swift */,
 				8AAF5A21281A8437000862E5 /* NavigationModel.swift */,
+				8A43BCE22832625A00593F52 /* Helpers.swift */,
 			);
 			path = MultiplicationForKids;
 			sourceTree = "<group>";
@@ -171,6 +174,7 @@
 				8A972CA328043EB70080C25F /* TableSelectionButton.swift in Sources */,
 				8A81C34C27DB658C00DDDC21 /* QuestionView.swift in Sources */,
 				8A972CA128043E640080C25F /* Font.swift in Sources */,
+				8A43BCE32832625B00593F52 /* Helpers.swift in Sources */,
 				8AD04B9427D6180600DD55FC /* AppStartView.swift in Sources */,
 				8AA9B8892808079D007389F4 /* Page.swift in Sources */,
 				8A972CA5280444590080C25F /* Question.swift in Sources */,
