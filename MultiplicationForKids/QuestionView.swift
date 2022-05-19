@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct QuestionView: View {
-    private var question = 0
     
+    @State public var question = 0
     @State var navigationBarBackButtonHidden = true
+    @State private var nextQuestion: Bool = false
     @State private var answer = "?"
+    @State private var correctAnswer = 0
     @State private var multipleSelectionList = [Int]()
+    
+    @State private var text = "Hey"
     
     @EnvironmentObject var game: Game
     
@@ -23,30 +27,62 @@ struct QuestionView: View {
     
     var body: some View {
         VStack {
+            
             HStack {
-                game.questions[question]
+                    game.questions[question]
                     Text(answer)
             }
             
             HStack {
                 ForEach(multipleSelectionList, id: \.self) { num in
                     Button {
-                        
+                        checkAnswer(num)
                     } label: {
                         Text("\(num)")
                     }
                 }
             }
+            
+            NavigationLink(destination: QuestionView(question: question).environmentObject(game), isActive: $nextQuestion) { EmptyView()
+            }
+            
+            NavigationLink(destination: ResultView(), isActive: $navModel.ResultViewIsActive) { EmptyView()
+            }
+            .isDetailLink(false)
+            
+            Text(text)
         }
+        .navigationBarHidden(true)
+        .navigationBarBackButtonHidden(navigationBarBackButtonHidden)
         .onAppear() {
             let min = game.questions[question].table
             let max = min * 12
-            let correctAnswer = game.results[question]
+            correctAnswer = game.results[question]
             self.multipleSelectionList = Helpers.generateRandomNumbers(min: min, max: max, size: 7, include: correctAnswer)
             print(self.multipleSelectionList)
             
         }
         
+    }
+    
+    func checkAnswer(_ selection: Int) {
+        if selection == correctAnswer {
+            text = "Correct!"
+            goToNextView()
+        } else {
+            text = "Wrong!"
+        }
+    }
+    
+    func goToNextView() {
+        question = question + 1
+        if question == game.numberOfQuestions {
+            nextQuestion = false
+            navModel.goToResultView()
+            self.navigationBarBackButtonHidden = false
+        } else {
+            nextQuestion = true
+        }
     }
         
 //            VStack {

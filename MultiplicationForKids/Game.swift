@@ -36,7 +36,6 @@ class Game: ObservableObject {
         }
     }
     
-    
     func populateResults() {
         self.questions.forEach() { question in
             let result = question.time * question.table

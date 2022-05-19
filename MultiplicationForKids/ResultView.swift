@@ -14,12 +14,12 @@ struct ResultView: View {
     
    @EnvironmentObject var navModel: NavigationModel
     
-   public var correct = 0
-   public var total = 0
+//   public var correct = 0
+//   public var total = 0
     
     var body: some View {
             VStack {
-                Text("You've answered \(correct) out of \(total) questions correctly!")
+                Text("Congrats!")
                
                 Button("Restart game") {
                     self.navigationBarBackButtonHidden = false
@@ -32,11 +32,9 @@ struct ResultView: View {
 }
 
 struct ResultView_Previews: PreviewProvider {
-    static let correctPreview = 5
-    static let totalPreview = 10
     
     static var previews: some View {
-        ResultView(correct: correctPreview, total: totalPreview)
+        ResultView()
             .environmentObject(NavigationModel())
     }
 }
