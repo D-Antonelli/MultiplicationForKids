@@ -14,9 +14,6 @@ struct ResultView: View {
     
    @EnvironmentObject var navModel: NavigationModel
     
-//   public var correct = 0
-//   public var total = 0
-    
     var body: some View {
             VStack {
                 Text("Congrats!")

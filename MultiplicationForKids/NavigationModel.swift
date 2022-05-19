@@ -12,17 +12,27 @@ class NavigationModel: ObservableObject {
     @Published var AppStartViewIsActive = false
     @Published var QuestionViewIsActive = false
     @Published var ResultViewIsActive = false
+    @Published var NextQuestionViewIsActive = false
     
     func goToQuestionView() {
-        QuestionViewIsActive.toggle()
+        QuestionViewIsActive = true
     }
     
     func goToResultView() {
-        ResultViewIsActive.toggle()
+        ResultViewIsActive = true
     }
 
     func returnToAppStartView() {
-        QuestionViewIsActive.toggle()
-        ResultViewIsActive.toggle()
+       QuestionViewIsActive = false
+       ResultViewIsActive = false
     }
-}
+    
+    func disableNextQuestionView() {
+        NextQuestionViewIsActive = false
+    }
+    
+    func activateNextQuestionView() {
+        NextQuestionViewIsActive = true
+    }
+    
+    }

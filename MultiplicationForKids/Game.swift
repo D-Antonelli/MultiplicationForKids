@@ -15,9 +15,14 @@ class Game: ObservableObject {
     @Published var numberOfQuestions = 0
     @Published var table = 0
     
-    func initGame() {
+    func initialise() {
         populateQuestions()
         populateResults()
+    }
+    
+    func reset() {
+        self.questions = [Question]()
+        self.results = [Int]()
     }
     
     func populateQuestions() {

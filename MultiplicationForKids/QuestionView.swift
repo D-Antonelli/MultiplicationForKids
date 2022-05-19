@@ -11,25 +11,23 @@ struct QuestionView: View {
     
     @State public var question = 0
     @State var navigationBarBackButtonHidden = true
-    @State private var nextQuestion: Bool = false
     @State private var answer = "?"
     @State private var correctAnswer = 0
     @State private var multipleSelectionList = [Int]()
-    
-    @State private var text = "Hey"
     
     @EnvironmentObject var game: Game
     
     @EnvironmentObject var navModel: NavigationModel
     
-//    @State private var correctAnswers = 0
-//    @State private var answers = Array(repeating: 0, count: 20)
     
     var body: some View {
         VStack {
             
             HStack {
+                if question < game.numberOfQuestions {
                     game.questions[question]
+                }
+                    
                     Text(answer)
             }
             
@@ -37,20 +35,20 @@ struct QuestionView: View {
                 ForEach(multipleSelectionList, id: \.self) { num in
                     Button {
                         checkAnswer(num)
+                        self.navigationBarBackButtonHidden = false
                     } label: {
                         Text("\(num)")
                     }
                 }
             }
+      
+            NavigationLink(destination: QuestionView(question: question).environmentObject(game), isActive: $navModel.NextQuestionViewIsActive) { EmptyView() }
             
-            NavigationLink(destination: QuestionView(question: question).environmentObject(game), isActive: $nextQuestion) { EmptyView()
+            if navModel.ResultViewIsActive == true {
+                NavigationLink(destination: ResultView(), isActive: $navModel.ResultViewIsActive) { EmptyView()
+                }
+      
             }
-            
-            NavigationLink(destination: ResultView(), isActive: $navModel.ResultViewIsActive) { EmptyView()
-            }
-            .isDetailLink(false)
-            
-            Text(text)
         }
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(navigationBarBackButtonHidden)
@@ -59,6 +57,7 @@ struct QuestionView: View {
             let max = min * 12
             correctAnswer = game.results[question]
             self.multipleSelectionList = Helpers.generateRandomNumbers(min: min, max: max, size: 7, include: correctAnswer)
+            navModel.disableNextQuestionView()
             print(self.multipleSelectionList)
             
         }
@@ -67,21 +66,18 @@ struct QuestionView: View {
     
     func checkAnswer(_ selection: Int) {
         if selection == correctAnswer {
-            text = "Correct!"
             goToNextView()
         } else {
-            text = "Wrong!"
+            // do nothing
         }
     }
     
     func goToNextView() {
         question = question + 1
-        if question == game.numberOfQuestions {
-            nextQuestion = false
-            navModel.goToResultView()
-            self.navigationBarBackButtonHidden = false
+        if question < game.numberOfQuestions {
+            navModel.activateNextQuestionView()
         } else {
-            nextQuestion = true
+            navModel.goToResultView()
         }
     }
         
