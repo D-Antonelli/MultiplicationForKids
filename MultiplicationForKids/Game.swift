@@ -23,6 +23,8 @@ class Game: ObservableObject {
     func reset() {
         self.questions = [Question]()
         self.results = [Int]()
+        numberOfQuestions = 0
+        table = 0
     }
     
     func populateQuestions() {

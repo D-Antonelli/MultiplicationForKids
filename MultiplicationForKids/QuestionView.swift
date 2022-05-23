@@ -24,7 +24,7 @@ struct QuestionView: View {
         VStack {
             
             HStack {
-                if question < game.numberOfQuestions {
+                if game.questions.count > 0 && question < game.numberOfQuestions {
                     game.questions[question]
                 }
                     
@@ -53,12 +53,8 @@ struct QuestionView: View {
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(navigationBarBackButtonHidden)
         .onAppear() {
-            let min = game.questions[question].table
-            let max = min * 12
-            correctAnswer = game.results[question]
-            self.multipleSelectionList = Helpers.generateRandomNumbers(min: min, max: max, size: 7, include: correctAnswer)
+            generateMultipleSelectionList()
             navModel.disableNextQuestionView()
-            print(self.multipleSelectionList)
             
         }
         
@@ -80,45 +76,13 @@ struct QuestionView: View {
             navModel.goToResultView()
         }
     }
-        
-//            VStack {
-//                List(game.questions) { question in
-//                    HStack {
-//                        question
-//                        TextField("answer", value: $answers[question.index], format: .number)
-//                    }
-//
-//                }
-//
-//                Spacer()
-//
-//                NavigationLink(destination: ResultView(correct: correctAnswers, total: game.numberOfQuestions), isActive: $navModel.ResultViewIsActive) { EmptyView()
-//                }
-//
-//                .isDetailLink(false)
-//
-//                Button("Submit") {
-//                    self.navigationBarBackButtonHidden = false
-//                    submitAnswers()
-//                    navModel.goToResultView()
-//                }
-//            }
-//            .navigationBarHidden(true)
-//            .navigationBarBackButtonHidden(navigationBarBackButtonHidden)
-//
-//    }
     
-//
-//    func submitAnswers() {
-//        game.questions.forEach() { question in
-//            let result = question.time * question.table
-//            let answer = answers[question.index]
-//            if(answer == result) {
-//                correctAnswers += 1
-//            }
-//        }
-   
- 
+    func generateMultipleSelectionList() {
+        let min = game.questions[question].table
+        let max = min * game.maxTime
+        correctAnswer = game.results[question]
+        self.multipleSelectionList = Helpers.generateRandomNumbers(min: min, max: max, size: 7, include: correctAnswer)
+    }
 }
 
 
