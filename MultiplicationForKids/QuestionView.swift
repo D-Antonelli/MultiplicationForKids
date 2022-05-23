@@ -12,7 +12,6 @@ struct QuestionView: View {
     @State public var question = 0
     @State var navigationBarBackButtonHidden = true
     @State private var answer = "?"
-    @State private var correctAnswer = 0
     @State private var multipleSelectionList = [Int]()
     
     @EnvironmentObject var game: Game
@@ -61,6 +60,7 @@ struct QuestionView: View {
     }
     
     func checkAnswer(_ selection: Int) {
+        let correctAnswer = game.results[question]
         if selection == correctAnswer {
             goToNextView()
         } else {
@@ -80,7 +80,7 @@ struct QuestionView: View {
     func generateMultipleSelectionList() {
         let min = game.questions[question].table
         let max = min * game.maxTime
-        correctAnswer = game.results[question]
+        let correctAnswer = game.results[question]
         self.multipleSelectionList = Helpers.generateRandomNumbers(min: min, max: max, size: 7, include: correctAnswer)
     }
 }
