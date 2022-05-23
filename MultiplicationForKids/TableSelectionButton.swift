@@ -20,7 +20,7 @@ struct TableSelectionButton: View {
             Image(decorative: image)
                 .resizable()
                 .scaledToFit()
-                .frame(maxHeight: 180)
+                .frame(maxHeight: 150)
         }
     }
 }

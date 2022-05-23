@@ -13,15 +13,21 @@ struct Page: View {
     public var subtitle: String
     
     var body: some View {
-        VStack {
+        HStack {
             button
-            
-            Text(title)
-                .foregroundColor(Color.red)
-                .font(.titleFont)
-            Text(subtitle)
-                .foregroundColor(.white)
-            
+            Spacer()
+            ZStack {
+                RoundedRectangle(cornerRadius: 25)
+                    .fill(Color.white.opacity(0.5))
+                    .frame(width: 160, height: 120)
+                VStack {
+                    Text(title)
+                        .foregroundColor(Color.red)
+                        .font(.largeTitleFont)
+                    Text(subtitle)
+                        .foregroundColor(.white)
+                }
+            }
             Spacer()
            
         }
