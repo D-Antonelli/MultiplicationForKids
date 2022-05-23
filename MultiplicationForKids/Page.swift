@@ -17,7 +17,7 @@ struct Page: View {
             button
             
             Text(title)
-                .foregroundColor(Color(red: 1, green: 0.349, blue: 0.3686))
+                .foregroundColor(Color.red)
                 .font(.titleFont)
             Text(subtitle)
                 .foregroundColor(.white)
