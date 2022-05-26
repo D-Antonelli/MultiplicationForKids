@@ -7,11 +7,28 @@
 
 import SwiftUI
 
+struct RoundedRectProgressViewStyle: ProgressViewStyle {
+    func makeBody(configuration: Configuration) -> some View {
+        ZStack(alignment: .leading) {
+            RoundedRectangle(cornerRadius: 25)
+                .frame(width: 300, height: 35)
+                .foregroundColor(Color.yellow.opacity(0.3))
+            
+            RoundedRectangle(cornerRadius: 25)
+                .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * 250, height: 35)
+                .foregroundColor(.yellow)
+        }
+        .padding()
+    }
+}
+
+
+
+
 struct QuestionView: View {
     
     @State public var question = 0
     @State var navigationBarBackButtonHidden = true
-    @State private var answer = "?"
     @State private var multipleSelectionList = [Int]()
     
     @EnvironmentObject var game: Game
@@ -21,13 +38,21 @@ struct QuestionView: View {
     
     var body: some View {
         VStack {
+            ZStack(alignment: .leading) {
+                ProgressView(value: Double(question + 1), total: Double(game.numberOfQuestions ?? 0))
+                    .progressViewStyle(RoundedRectProgressViewStyle())
+                Image(decorative: game.animals[(game.table ?? 1) - 1])
+                    .resizable()
+                    .aspectRatio(contentMode: .fit)
+                    .frame(height: 55, alignment: .trailing)
+            }
+            
             
             HStack {
-                if game.questions.count > 0 && question < game.numberOfQuestions {
+                if let questions =  game.numberOfQuestions, question < questions, game.questions.count > 0 {
                     game.questions[question]
                 }
-                    
-                    Text(answer)
+                
             }
             
             HStack {
@@ -40,13 +65,13 @@ struct QuestionView: View {
                     }
                 }
             }
-      
+            
             NavigationLink(destination: QuestionView(question: question).environmentObject(game), isActive: $navModel.NextQuestionViewIsActive) { EmptyView() }
             
             if navModel.ResultViewIsActive == true {
                 NavigationLink(destination: ResultView(), isActive: $navModel.ResultViewIsActive) { EmptyView()
                 }
-      
+                
             }
         }
         .navigationBarHidden(true)
@@ -70,7 +95,7 @@ struct QuestionView: View {
     
     func goToNextView() {
         question = question + 1
-        if question < game.numberOfQuestions {
+        if question < game.numberOfQuestions! {
             navModel.activateNextQuestionView()
         } else {
             navModel.goToResultView()

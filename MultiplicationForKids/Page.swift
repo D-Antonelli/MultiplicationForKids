@@ -18,7 +18,7 @@ struct Page: View {
         
                 VStack {
                     Text(title)
-                        .foregroundColor(Color.red)
+                        .foregroundColor(Color.white)
                         .font(.largeTitleFont)
                     Text(subtitle)
                         .foregroundColor(.white)
