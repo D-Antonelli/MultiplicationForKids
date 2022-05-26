@@ -12,6 +12,7 @@ extension Font {
     static let titleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.title.size)
     static let mediumTitleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.title2.size)
     static let largeTitleFont = Font.custom("ArialRoundedMTBold", size: Font.TextStyle.largeTitle.size)
+    static let extraLargeTitleFont = Font.custom("ArialRoundedMTBold", size: 150)
 }
 
 extension Font.TextStyle {
