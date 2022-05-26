@@ -46,11 +46,15 @@ struct QuestionView: View {
                     .aspectRatio(contentMode: .fit)
                     .frame(height: 50, alignment: .center)
             }
+            Spacer()
             
-            
-            HStack {
+            VStack {
                 if let questions =  game.numberOfQuestions, question < questions, game.questions.count > 0 {
-                    game.questions[question]
+                    Text("\(game.questions[question].table)")
+                    Text("\(game.questions[question].time)")
+                } else {
+                    Text("1")
+                    Text("2")
                 }
                 
             }
