@@ -8,13 +8,9 @@
 import SwiftUI
 
 
-struct Question: Identifiable, Hashable, View {
+struct Question: Identifiable, Hashable {
     let table: Int
     let time: Int
     let index: Int
     let id = UUID()
-    
-    var body: some View {
-        Text("\(table) x \(time) = ")
-    }
 }
