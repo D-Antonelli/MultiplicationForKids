@@ -11,11 +11,11 @@ struct RoundedRectProgressViewStyle: ProgressViewStyle {
     func makeBody(configuration: Configuration) -> some View {
         ZStack(alignment: .leading) {
             RoundedRectangle(cornerRadius: 25)
-                .frame(width: 280, height: 35)
+                .frame(width: 300, height: 35)
                 .foregroundColor(Color.yellow.opacity(0.3))
             
             RoundedRectangle(cornerRadius: 25)
-                .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * 280, height: 35)
+                .frame(width: CGFloat(configuration.fractionCompleted ?? 0) * 300, height: 35)
                 .foregroundColor(.yellow)
         }
         .padding()
@@ -48,16 +48,29 @@ struct QuestionView: View {
             }
             Spacer()
             
-            VStack {
+            Group {
                 if let questions =  game.numberOfQuestions, question < questions, game.questions.count > 0 {
-                    Text("\(game.questions[question].table)")
-                    Text("\(game.questions[question].time)")
-                } else {
-                    Text("1")
-                    Text("2")
+                    
+                    HStack(alignment: .bottom) {
+                        Text("x")
+                            .font(.extraLargeTitleFont)
+                        Spacer()
+                        VStack {
+                            Text("\(game.questions[question].table)")
+                                .font(.extraLargeTitleFont)
+                            Text("\(game.questions[question].time)")
+                                .font(.extraLargeTitleFont)
+                        }
+                        
+                    }
+                    
                 }
                 
             }
+            Rectangle().fill(.black).frame(width: .infinity, height: 2, alignment: .center)
+            
+            Spacer()
+            
             
             HStack {
                 ForEach(multipleSelectionList, id: \.self) { num in
@@ -66,6 +79,12 @@ struct QuestionView: View {
                         self.navigationBarBackButtonHidden = false
                     } label: {
                         Text("\(num)")
+                            .font(.largeTitleFont)
+                            .foregroundColor(.mint)
+                            .frame(width: 80, height: 80)
+                            .background(.yellow)
+                            .cornerRadius(25)
+                            .shadow(color: Color.yellow.opacity(0.5), radius: 0, x: 0, y: 8)
                     }
                 }
             }
@@ -78,6 +97,7 @@ struct QuestionView: View {
                 
             }
         }
+        .padding()
         .navigationBarHidden(true)
         .navigationBarBackButtonHidden(navigationBarBackButtonHidden)
         .onAppear() {
