@@ -84,7 +84,7 @@ struct QuestionView: View {
                         Text("\(num)")
                             .font(.largeTitleFont)
                             .foregroundColor(.mint)
-                            .frame(width: 80, height: 80)
+                            .frame(width: 100, height: 100)
                             .background(.yellow)
                             .cornerRadius(25)
                             .shadow(color: Color.yellow.opacity(0.5), radius: 0, x: 0, y: 8)
