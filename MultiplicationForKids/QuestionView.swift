@@ -35,6 +35,9 @@ struct QuestionView: View {
     
     @EnvironmentObject var navModel: NavigationModel
     
+    var columns: [GridItem] =
+    Array(repeating: .init(.flexible()), count: 3)
+    
     
     var body: some View {
         VStack {
@@ -72,7 +75,7 @@ struct QuestionView: View {
             Spacer()
             
             
-            HStack {
+            LazyVGrid(columns: columns) {
                 ForEach(multipleSelectionList, id: \.self) { num in
                     Button {
                         checkAnswer(num)
@@ -85,8 +88,11 @@ struct QuestionView: View {
                             .background(.yellow)
                             .cornerRadius(25)
                             .shadow(color: Color.yellow.opacity(0.5), radius: 0, x: 0, y: 8)
+                            .fixedSize(horizontal: false, vertical: false)
                     }
                 }
+                .padding()
+                
             }
             
             NavigationLink(destination: QuestionView(question: question).environmentObject(game), isActive: $navModel.NextQuestionViewIsActive) { EmptyView() }
@@ -130,7 +136,7 @@ struct QuestionView: View {
         let min = game.questions[question].table
         let max = min * game.maxTime
         let correctAnswer = game.results[question]
-        self.multipleSelectionList = Helpers.generateRandomNumbers(min: min, max: max, size: 7, include: correctAnswer)
+        self.multipleSelectionList = Helpers.generateRandomNumbers(min: min, max: max, size: 6, include: correctAnswer)
     }
 }
 
