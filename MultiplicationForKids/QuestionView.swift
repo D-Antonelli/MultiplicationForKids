@@ -58,7 +58,7 @@ struct QuestionView: View {
                         Text("x")
                             .font(.extraLargeTitleFont)
                         Spacer()
-                        VStack {
+                        VStack(alignment: .trailing) {
                             Text("\(game.questions[question].table)")
                                 .font(.extraLargeTitleFont)
                             Text("\(game.questions[question].time)")
