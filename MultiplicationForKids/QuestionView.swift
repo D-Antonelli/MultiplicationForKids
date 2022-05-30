@@ -50,7 +50,6 @@ struct QuestionView: View {
                     .frame(height: 50, alignment: .center)
             }
             Spacer()
-            
             Group {
                 HStack(alignment: .bottom) {
                     Text("x")
@@ -88,7 +87,6 @@ struct QuestionView: View {
             Rectangle().fill(.black).frame(width: .infinity, height: 2, alignment: .center)
             
             Spacer()
-            
             
             LazyVGrid(columns: columns) {
                 ForEach(multipleSelectionList, id: \.self) { num in
