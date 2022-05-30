@@ -52,22 +52,37 @@ struct QuestionView: View {
             Spacer()
             
             Group {
-                if let questions =  game.numberOfQuestions, question < questions, game.questions.count > 0 {
-                    
-                    HStack(alignment: .bottom) {
-                        Text("x")
+                HStack(alignment: .bottom) {
+                    Text("x")
+                        .font(.extraLargeTitleFont)
+                    Spacer()
+                    VStack(alignment: .trailing) {
+                        Text("\(game.questions[question].table)")
                             .font(.extraLargeTitleFont)
-                        Spacer()
-                        VStack(alignment: .trailing) {
-                            Text("\(game.questions[question].table)")
-                                .font(.extraLargeTitleFont)
-                            Text("\(game.questions[question].time)")
-                                .font(.extraLargeTitleFont)
-                        }
-                        
+                        Text("\(game.questions[question].time)")
+                            .font(.extraLargeTitleFont)
                     }
                     
                 }
+                
+                
+//                if let questions =  game.numberOfQuestions, question < questions, game.questions.count > 0 {
+//
+//                    HStack(alignment: .bottom) {
+//                        Text("x")
+//                            .font(.extraLargeTitleFont)
+//                        Spacer()
+//                        VStack(alignment: .trailing) {
+//                            Text("\(game.questions[question].table)")
+//                                .font(.extraLargeTitleFont)
+//                            Text("\(game.questions[question].time)")
+//                                .font(.extraLargeTitleFont)
+//                        }
+//
+//                    }
+//
+//                }
+                
                 
             }
             Rectangle().fill(.black).frame(width: .infinity, height: 2, alignment: .center)
@@ -83,11 +98,11 @@ struct QuestionView: View {
                     } label: {
                         Text("\(num)")
                             .font(.largeTitleFont)
-                            .foregroundColor(.mint)
+                            .foregroundColor(.white)
                             .frame(width: 100, height: 100)
-                            .background(.yellow)
+                            .background(Color(red: 0.00, green: 0.51, blue: 0.65))
                             .cornerRadius(25)
-                            .shadow(color: Color.yellow.opacity(0.5), radius: 0, x: 0, y: 8)
+                            .shadow(color: Color(red: 0.00, green: 0.51, blue: 0.65).opacity(0.5), radius: 0, x: 0, y: 8)
                             .fixedSize(horizontal: false, vertical: false)
                     }
                 }
