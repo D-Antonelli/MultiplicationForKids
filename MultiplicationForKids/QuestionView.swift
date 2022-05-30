@@ -51,36 +51,36 @@ struct QuestionView: View {
             }
             Spacer()
             Group {
-                HStack(alignment: .bottom) {
-                    Text("x")
-                        .font(.extraLargeTitleFont)
-                    Spacer()
-                    VStack(alignment: .trailing) {
-                        Text("\(game.questions[question].table)")
-                            .font(.extraLargeTitleFont)
-                        Text("\(game.questions[question].time)")
-                            .font(.extraLargeTitleFont)
-                    }
-                    
-                }
-                
-                
-//                if let questions =  game.numberOfQuestions, question < questions, game.questions.count > 0 {
-//
-//                    HStack(alignment: .bottom) {
-//                        Text("x")
+//                HStack(alignment: .bottom) {
+//                    Text("x")
+//                        .font(.extraLargeTitleFont)
+//                    Spacer()
+//                    VStack(alignment: .trailing) {
+//                        Text("\(game.questions[question].table)")
 //                            .font(.extraLargeTitleFont)
-//                        Spacer()
-//                        VStack(alignment: .trailing) {
-//                            Text("\(game.questions[question].table)")
-//                                .font(.extraLargeTitleFont)
-//                            Text("\(game.questions[question].time)")
-//                                .font(.extraLargeTitleFont)
-//                        }
-//
+//                        Text("\(game.questions[question].time)")
+//                            .font(.extraLargeTitleFont)
 //                    }
 //
 //                }
+                
+                
+                if let questions =  game.numberOfQuestions, question < questions, game.questions.count > 0 {
+
+                    HStack(alignment: .bottom) {
+                        Text("x")
+                            .font(.extraLargeTitleFont)
+                        Spacer()
+                        VStack(alignment: .trailing) {
+                            Text("\(game.questions[question].table)")
+                                .font(.extraLargeTitleFont)
+                            Text("\(game.questions[question].time)")
+                                .font(.extraLargeTitleFont)
+                        }
+
+                    }
+
+                }
                 
                 
             }
@@ -110,8 +110,8 @@ struct QuestionView: View {
             
             NavigationLink(destination: QuestionView(question: question).environmentObject(game), isActive: $navModel.NextQuestionViewIsActive) { EmptyView() }
             
-            if navModel.ResultViewIsActive == true {
-                NavigationLink(destination: ResultView(), isActive: $navModel.ResultViewIsActive) { EmptyView()
+            if navModel.EndOfGameViewIsActive == true {
+                NavigationLink(destination: EndOfGameView().environmentObject(game), isActive: $navModel.EndOfGameViewIsActive) { EmptyView()
                 }
                 
             }
@@ -141,7 +141,7 @@ struct QuestionView: View {
         if question < game.numberOfQuestions! {
             navModel.activateNextQuestionView()
         } else {
-            navModel.goToResultView()
+            navModel.goToEndOfGameView()
         }
     }
     

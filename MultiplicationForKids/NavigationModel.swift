@@ -11,20 +11,20 @@ class NavigationModel: ObservableObject {
 
     @Published var AppStartViewIsActive = false
     @Published var QuestionViewIsActive = false
-    @Published var ResultViewIsActive = false
+    @Published var EndOfGameViewIsActive = false
     @Published var NextQuestionViewIsActive = false
     
     func goToQuestionView() {
         QuestionViewIsActive = true
     }
     
-    func goToResultView() {
-        ResultViewIsActive = true
+    func goToEndOfGameView() {
+        EndOfGameViewIsActive = true
     }
 
     func returnToAppStartView() {
        QuestionViewIsActive = false
-       ResultViewIsActive = false
+       EndOfGameViewIsActive = false
     }
     
     func disableNextQuestionView() {
